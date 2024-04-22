@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  web-customer-prod:
+    image: web-customer-prod
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./DOCKERFILE
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:80
+    networks:
+      - overlay
+networks:
+  overlay:

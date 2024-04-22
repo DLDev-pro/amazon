@@ -1,0 +1,70 @@
+.ant-tabs > .ant-tabs-nav {
+  background-color: white;
+  padding-inline: 20px;
+  border-radius: 5px;
+}
+.custom-class-notification .ant-notification-notice-message {
+  color: white;
+}
+.ant-picker-range {
+  border-radius: 5px;
+  height: 35px;
+}
+.ant-picker {
+  border-radius: 5px;
+  height: 35px;
+}
+.ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
+  height: 35px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.ant-input-search
+  > .ant-input-group
+  > .ant-input-group-addon:last-child
+  .ant-input-search-button:not(.ant-btn-primary) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 35px;
+}
+.ant-input {
+  border-radius: 5px;
+}
+.ant-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.ant-popover-message-title {
+  font-weight: 600;
+}
+.ant-table-cell {
+  border-top: 1.5px solid #c6c6c6;
+  border-bottom: 1.5px solid #c6c6c6;
+  border-left: 1.5px solid #c6c6c6;
+  border-right: 1.5px solid #c6c6c6;
+  font-weight: 600;
+}
+.ant-table-thead > tr > th {
+  background-color: #ebebeb;
+}
+.ant-table-thead > tr > th > .ant-table-cell-scrollbar {
+  background-color: brown;
+}
+.ant-table.ant-table-bordered > .ant-table-container {
+  border-bottom: 1.5px solid #c6c6c6;
+  border-right: 1.5px solid #c6c6c6;
+}
+.ant-table-header {
+  border-bottom: 1.5px solid #c6c6c6;
+}
+.expand {
+  background-color: #f6f9ff;
+  /* borderTop: none; */
+}
+/* fixed hàng tính tổng của bảng antd */
+.ant-table-summary {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+}

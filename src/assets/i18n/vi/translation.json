@@ -1,0 +1,22 @@
+{
+    "title":{
+        "shop":"Cửa hàng",
+        "account" :"Tài khoản",
+        "customer":"Khách hàng",
+        "order":"Đơn hàng",
+        "dashboard":"Tổng quan",
+        "report":"Báo cáo",
+        "news":"Tin tức",
+        "product":"Sản phẩm",
+        "config":"Cấu hình",
+        "category":"Danh mục"
+    },
+    "placeholder":{
+        "login_name":"Tên đăng nhập",
+        "password":"Mật khẩu"
+    },
+    "messager":{
+        "request_fail": "Yêu cầu thất bại",
+        "connect_server_error":"Lỗi kết nối đến server"
+    }
+}

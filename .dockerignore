@@ -1,0 +1,9 @@
+.husky
+.git
+.vscode
+.git
+.dockerignore
+Dockerfile
+node_modules
+README.md
+scripts
