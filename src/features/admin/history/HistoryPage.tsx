@@ -7,6 +7,7 @@ import history from 'utils/history'
 import { formatPrice } from 'utils/ruleForm'
 import { requestHistory } from './api/ApiHistory'
 import * as Styled from './styled'
+import R from 'assets'
 
 const HistoryPage: React.FC = () => {
   const [listOrder, setlistOrder] = useState<any>([])
@@ -139,6 +140,7 @@ const HistoryPage: React.FC = () => {
         style={{
           color: 'var(--primary-color)',
           backgroundColor: 'var(--primary-color)',
+
           height: '0.5px',
           width: '95%',
           margin: '0 auto',
@@ -147,49 +149,89 @@ const HistoryPage: React.FC = () => {
       />
 
       <Styled.ContentTab>
-        {listOrder?.map((item: any) => (
-          <Styled.OrderBlock
-            key={item.id}
-            onClick={() => {
-              if (item.status === 'Processing')
-                history.push({
-                  pathname: ADMIN_ROUTER_PATH.DETAIL_ORDER,
-                  state: item,
-                })
-            }}
-          >
-            <div
-              className="tag-status"
+        {listOrder?.map((item: any) => {
+          console.log('item', item)
+          let nameProduct = ''
+          if (item.name_product.length > 50) {
+            nameProduct = item.name_product.slice(0, 45) + '...'
+          }
+          return (
+            <Styled.OrderBlock
+              key={item.id}
               style={{
-                backgroundColor: getColorForTagStatus(item.status).color,
+                borderRadius: '10px',
+                color: 'white',
+                backgroundImage: 'linear-gradient(to right, #65affe, #17c8fc)',
+              }}
+              onClick={() => {
+                if (item.status === 'Processing')
+                  history.push({
+                    pathname: ADMIN_ROUTER_PATH.DETAIL_ORDER,
+                    state: item,
+                  })
               }}
             >
-              {getColorForTagStatus(item.status).text}
-            </div>
-            <div className="name-product">{item.name_product}</div>
-            <div className="inner-info">
-              <img
-                alt="product"
-                src={getImageFromServer(item.image_url)}
-                crossOrigin="anonymous"
-              />
-              <div className="price-order">
-                <div className="price-block">
-                  <div>Giá tiền(đ)</div>
-                  <div style={{ color: 'var(--green-1)' }}>
-                    ${formatPrice(item.price_product)}
+              <div
+                className="tag-status"
+                style={{
+                  backgroundColor: getColorForTagStatus(item.status).color,
+                }}
+              >
+                {getColorForTagStatus(item.status).text}
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <img
+                  src={R.images.logo_web}
+                  style={{
+                    width: '50px',
+                  }}
+                  alt=""
+                />
+                Từ Amazon
+              </div>
+              <div className="name-product">{nameProduct}</div>
+              <div className="inner-info">
+                <img
+                  alt="product"
+                  src={getImageFromServer(item.image_url)}
+                  // src={R.images.logo_web}
+                  crossOrigin="anonymous"
+                />
+                <div className="price-order">
+                  <div className="price-block">
+                    <div
+                      style={{
+                        fontSize: '12px',
+                      }}
+                    >
+                      Giá trị đơn hàng
+                    </div>
+                    <div style={{ color: 'var(--green-1)', fontSize: 18 }}>
+                      ${formatPrice(item.price_product)}
+                    </div>
                   </div>
-                </div>
-                <div className="price-block">
-                  <div>Hoa hồng(đ)</div>
-                  <div style={{ color: 'var(--orange-1)' }}>
-                    ${formatPrice(item.commission)}
+                  <div className="price-block">
+                    <div
+                      style={{
+                        fontSize: '12px',
+                      }}
+                    >
+                      Lợi nhuận
+                    </div>
+                    <div style={{ color: 'var(--orange-1)', fontSize: 18 }}>
+                      ${formatPrice(item.commission)}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Styled.OrderBlock>
-        ))}
+            </Styled.OrderBlock>
+          )
+        })}
       </Styled.ContentTab>
     </Styled.ContainerHistory>
   )

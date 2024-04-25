@@ -98,6 +98,7 @@ export const OrderBlock = styled(Col)`
     width: 130px;
     height: 24px;
     border-bottom-left-radius: 20px;
+    border-top-right-radius: 8px;
     padding-left: 20px;
     color: white;
   }
@@ -123,6 +124,6 @@ export const OrderBlock = styled(Col)`
   }
   .name-product {
     font-weight: 600;
-    color: var(--primary-title);
+    color: white;
   }
 `

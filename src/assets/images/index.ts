@@ -52,5 +52,8 @@ const images = {
   vang: require('./vang.png'),
   bachkim: require('./bachkim.png'),
   kimcuong: require('./kimcuong.png'),
+  bgModalHome: require('./bg-modal-home.png'),
+  modalleft: require('./modalleft.png'),
+  modalright: require('./modalright.png'),
 }
 export default images

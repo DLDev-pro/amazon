@@ -74,7 +74,7 @@ export const replaceSpecialCharacter = (inputString: string) => {
 }
 
 export function getImageFromServer(image_link: string) {
-  return process.env.REACT_APP_BASE_URL?.replace('api/', '') + image_link
+  return process.env.REACT_APP_IMG_URL?.replace('api/', '') + image_link
 }
 export function formatSensitiveText(input: string, len: number) {
   if (input) {
