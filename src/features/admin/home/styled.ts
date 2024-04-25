@@ -1,6 +1,5 @@
 import { Button, Col } from 'antd'
 import styled from 'styled-components'
-import R from 'assets'
 
 export const WrapUserIncomeList = styled.div`
   margin-top: 1rem;

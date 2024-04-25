@@ -11,6 +11,7 @@ import QuickAction from './components/QuickAction'
 import SlickBanner from './components/SlickBanner'
 import * as Styled from './styled'
 import { t } from 'i18next'
+import AboutPage from './About'
 
 const { Title, Paragraph, Text } = Typography
 const HomePage: React.FC = () => {
@@ -96,51 +97,148 @@ const HomePage: React.FC = () => {
       possible.charAt(Math.floor(Math.random() * possible.length))
     return text
   }
-  const [openPopup, setOpenPopup] = useState<boolean>(true)
+  const [openPopup, setOpenPopup] = useState<boolean>(false)
 
   const PopupModal = () => {
     return (
       <div
         style={{
+          backgroundColor: 'rgba(0,0,0,.5)',
           position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '10rem',
-          height: '10rem',
-          backgroundColor: 'rgba(0,0,0)',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
           zIndex: 999,
         }}
       >
-        <span
-          style={{
-            position: 'fixed',
-            top: '-5%',
-            right: '-5%',
-            height: '2rem',
-            width: '2rem',
-            backgroundColor: 'white',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            fontWeight: 'bold',
-            borderRadius: '50%',
-          }}
-          onClick={() => setOpenPopup(false)}
-        >
-          X
-        </span>
         <div
           style={{
-            position: 'absolute',
+            position: 'fixed',
+            top: '12rem',
+            left: '50%',
+            transform: 'translateX(-50% )',
+            width: '95%',
+            margin: '0 auto',
+
+            height: '25rem',
+            zIndex: 999,
+            background: `url(${R.images.bgModalHome}) 2rem no-repeat, -webkit-gradient(linear, left top, left bottom, from(#ffcc2c), color-stop(60%, #fff))`,
+            backgroundClip: 'padding-box',
+            borderRadius: '10px',
+            display: 'flex',
+            flexDirection: 'column',
+            outline: 0,
+            pointerEvents: 'auto',
           }}
-          role="document"
         >
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
+          <span
+            style={{
+              position: 'fixed',
+              top: '0',
+              right: '0',
+              height: '2rem',
+              width: '2rem',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              fontWeight: 'bold',
+              fontSize: '1.5rem',
+            }}
+            onClick={() => setOpenPopup(false)}
+          >
+            X
+          </span>
+          <div
+            style={{
+              position: 'absolute',
+            }}
+            role="document"
+          >
+            <div className="modal-content">
+              <div
+                style={{
+                  alignItems: 'center',
+                  borderBottom: '1px solid rgba(0,0,0,.125)',
+                  borderTopLeftRadius: '0.3rem',
+                  borderTopRightRadius: '0.3rem',
+                  display: 'flex',
+                  flexShrink: 0,
+                  justifyContent: 'center',
+                  padding: '1rem',
+                }}
+              >
+                <img
+                  src={R.images.modalleft}
+                  style={{
+                    width: '35px',
+                  }}
+                  alt=""
+                />
+                <img
+                  src={R.images.thongbaodacbiet}
+                  style={{
+                    width: '200px',
+                  }}
+                  alt=""
+                />
+                <img
+                  src={R.images.modalright}
+                  style={{
+                    width: '35px',
+                  }}
+                  alt=""
+                />
+              </div>
+              <div
+                //         background-color: #fff;
+                //         border-radius: 15px;
+                //         margin: 0 15px;
+                //         font-size: 1.5rem;
+                // line-height: 2rem;
+                // padding: var(--bs-modal-padding);
+                // position: relative;
+                style={{
+                  backgroundColor: '#fff',
+                  borderRadius: '15px',
+                  margin: '0 15px',
+                  fontSize: '14px',
+
+                  padding: '1rem',
+                  position: 'relative',
+                }}
+              >
+                <h1
+                  style={{
+                    fontSize: '16px',
+                  }}
+                >
+                  Amazon kính chào khách hàng!
+                </h1>
+                <p>
+                  <span style={{ color: 'rgb(52, 152, 219)' }}>
+                    Nâng cấp độc quyền:
+                  </span>
+                  Khu vực nâng cấp có thể tăng số lượng đơn hàng mỗi ngày, cấp
+                  độ thành viên càng cao thì số lượng đơn hàng càng nhiều và hoa
+                  hồng càng cao.
+                </p>
+                <br />
+                <p>
+                  <span style={{ color: 'rgb(52, 152, 219)' }}>
+                    Lợi ích khi mời:
+                  </span>{' '}
+                  Bạn nhận được 0,1 - 0,5% hoa hồng đến từ đơn hàng của cộng tác
+                  viên!
+                </p>
+                <br />
+
+                <p>
+                  <span style={{ color: 'rgb(52, 152, 219)' }}>Nhắc nhở:</span>{' '}
+                  Đối với những người bạn lần đầu tiên rút tiền, vui lòng liên
+                  hệ với bộ phận chăm sóc khách hàng.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -149,7 +247,8 @@ const HomePage: React.FC = () => {
   }
   return (
     <div>
-      {openPopup && <PopupModal />}
+      <AboutPage />
+      {/* {openPopup && <PopupModal />}
       <HeaderContainer />
       <SlickBanner />
       <QuickAction />
@@ -174,7 +273,7 @@ const HomePage: React.FC = () => {
             </span>
           </Styled.UserIncomeList>
         ))}
-      </Styled.WrapUserIncomeList>
+      </Styled.WrapUserIncomeList> */}
     </div>
   )
 }
@@ -184,7 +283,7 @@ const HeaderContainer = () => {
   if (userInfo === null) return <></>
   return (
     <Row
-      gutter={20}
+      gutter={5}
       style={{
         padding: '10px',
       }}
@@ -215,20 +314,20 @@ const HeaderContainer = () => {
           <Text
             style={{
               background: '#ff5f3d',
-              width: 100,
+              width: 'fit-content',
               padding: '0 5px',
               borderRadius: 999,
               display: 'inline-block',
             }}
           >
-            $ {userInfo.balance}
+            ${userInfo.balance}
           </Text>
         </div>
         {userInfo.avatar !== null && (
           <Image
             width={60}
             height={60}
-            style={{ borderRadius: '50%' }}
+            style={{ borderRadius: '50%', objectFit: 'cover' }}
             src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg"
           />
         )}
