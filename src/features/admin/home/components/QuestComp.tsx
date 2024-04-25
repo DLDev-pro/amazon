@@ -5,6 +5,7 @@ import { ADMIN_ROUTER_PATH } from 'common/config'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import * as Styled from '../styled'
+import { t } from 'i18next'
 
 type Props = { data: any; isValid: boolean }
 
@@ -53,7 +54,9 @@ const QuestComp: React.FC<Props> = ({ data, isValid }) => {
             alt=""
           />
         </span>
-        <span className="discount">Hoa hồng {data?.commission_percent}%</span>
+        <span className="discount">
+          {t('home_page.profit')} {data?.commission_percent}%
+        </span>
         <span style={{ marginBottom: 5 }} className="category-product">
           {data?.category?.join(' | ')}
         </span>
@@ -71,7 +74,7 @@ const QuestComp: React.FC<Props> = ({ data, isValid }) => {
                 }}
                 icon={!isValid && <LockOutlined />}
               >
-                {isValid ? '' : 'Chờ nâng cấp'}
+                {isValid ? '' : t('wait_for_upgrade')}
               </Styled.ButtonStyled>
             </div>
           )}

@@ -10,6 +10,7 @@ import history from 'utils/history'
 import { formatPrice } from 'utils/ruleForm'
 import { requestAnOrder, sendOrder } from './api/ApiOrder'
 import * as S from './styled'
+import { t } from 'i18next'
 
 const styleIcon = { fontSize: '35px', color: 'white' }
 
@@ -55,15 +56,19 @@ const BillOrder: React.FC = () => {
       <S.BillContainer>
         <S.Title>
           <BlueIconComp icon={<LightBulbIcon style={styleIcon} />} />
-          Đơn vị trật tự
+          {t('bill.unit_of_order')}
         </S.Title>
         <div style={{ marginTop: '1rem' }}>
-          Thời gian nhận：
+          {t('bill.created_at')}：
           {data?.created_at &&
             moment(data?.created_at).format('DD/MM/YYYY HH:mm:ss')}
         </div>
-        <div>Mã đơn hàng：{data?._id}</div>
-        <b>{data?.meta?.level.commission_percent}%</b>
+        <div>
+          {t('bill.order_id')}：{data?._id}
+        </div>
+        <b>
+          {t('bill.commission')}: {data?.meta?.level.commission_percent}%
+        </b>
         <S.ImageBlock>
           <img
             alt="gif"
@@ -72,17 +77,17 @@ const BillOrder: React.FC = () => {
           />
         </S.ImageBlock>
         <div className="info">
-          Tổng số tiền đơn hàng:
+          {t('bill.total_order_price')}:
           <span className="content">$ {formatPrice(data?.meta?.value)}</span>
         </div>
         <div className="info">
-          Hoa hồng:
+          {t('bill.commission')}:
           <span className="content">
             $ {formatPrice(data?.meta?.commission)}
           </span>
         </div>
         <div className="info">
-          Số tiền hoàn trả:
+          {t('bill.return_blance')}:
           <span className="content">
             {' '}
             $ {formatPrice(data?.meta?.value + data?.meta?.commission)}
@@ -102,7 +107,7 @@ const BillOrder: React.FC = () => {
               handleClickBtn()
             }}
           >
-            Gửi đơn hàng
+            {t('bill.send_order')}
           </S.StartBtn>
         </div>
       </S.BillContainer>

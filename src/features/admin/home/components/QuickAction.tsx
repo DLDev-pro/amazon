@@ -8,6 +8,7 @@ import { useAppSelector } from 'redux/store/store'
 import Swal from 'sweetalert2'
 import { CHAT_LINK } from 'utils/constants'
 import R from 'assets'
+import { t } from 'i18next'
 
 const QuickAction: React.FC = () => {
   const { userInfo } = useAppSelector(state => state.AuthReducer)
@@ -27,7 +28,7 @@ const QuickAction: React.FC = () => {
       >
         <div className="main-action">
           <img src={R.images.vongquay} alt="" />
-          Vòng quay may mắn
+          {t('home_page.lucky_draw')}
         </div>
       </Styled.ActionBlock>
       <Styled.ActionBlock
@@ -39,7 +40,7 @@ const QuickAction: React.FC = () => {
       >
         <div className="main-action">
           <img src={R.images.viloinhuan} alt="" />
-          Nâng cấp nhanh
+          {t('home_page.quick_update')}
         </div>
       </Styled.ActionBlock>
       <Styled.ActionBlock
@@ -52,7 +53,7 @@ const QuickAction: React.FC = () => {
       >
         <div className="main-action">
           <img src={R.images.nap} alt="" />
-          Nạp nhanh
+          {t('home_page.quick_deposit')}
         </div>
       </Styled.ActionBlock>
       <Styled.ActionBlock
@@ -82,7 +83,7 @@ const QuickAction: React.FC = () => {
       >
         <div className="main-action">
           <img src={R.images.rut} alt="" />
-          Rút nhanh
+          {t('home_page.quick_withdraw')}
         </div>
       </Styled.ActionBlock>
     </Row>
