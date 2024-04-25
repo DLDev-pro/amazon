@@ -20,6 +20,7 @@ import {
 import * as Styled from './styled'
 import images from 'assets/images'
 import R from 'assets'
+import Map from './components/Map'
 
 const { Header, Footer, Content } = Layout
 const contentStyle: React.CSSProperties = {
@@ -188,7 +189,9 @@ const AboutPage = () => {
           }}
         >
           <Col lg={6} md={24} order={1}>
-            <div className="map">map</div>
+            <div className="map">
+              <Map />
+            </div>
           </Col>
           <Col lg={8} md={24} order={2}>
             <div className="footer__logo mb-10">
