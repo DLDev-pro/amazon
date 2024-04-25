@@ -1,5 +1,6 @@
 import { Button, Col } from 'antd'
 import styled from 'styled-components'
+import R from 'assets'
 
 export const WrapUserIncomeList = styled.div`
   margin-top: 1rem;
@@ -26,22 +27,10 @@ export const UserIncomeList = styled.div`
 `
 
 export const ItemCatalog = styled(Col)`
-  height: 4rem;
-  padding: 8px 10px;
-  margin-bottom: 12px;
   .catalog-block {
-    padding: 8px;
-    background-image: linear-gradient(
-      90deg,
-      #32c3c2 0%,
-      #2a84c5 45%,
-      #0c52d1 100%
-    );
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
     border-radius: 12px;
     color: white;
+    margin: 2px 0;
     :hover {
       cursor: pointer;
     }
@@ -59,33 +48,69 @@ export const ActionBlock = styled(Col)`
     border-radius: 12px;
     padding: 12px;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
+    font-size: 12px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
-      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
   }
 `
 export const WarpQuest = styled(Col)`
   padding: 12px;
   .main-quest {
     display: flex;
+    position: relative;
     flex-direction: column;
     width: 100%;
     padding: 12px;
     border-radius: 12px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
       rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    .active {
+      position: relative;
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background-color: black;
+        opacity: 0.5;
+      }
+      .text-overlay {
+        position: absolute;
+        inset: 0;
+        color: white;
+        background-color: transparent;
+        font-weight: 700;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto 0;
+      }
+    }
+
     .rank-name {
-      font-weight: 700;
+      position: absolute;
+      top: -10px;
+      left: 0;
+      max-width: 100%;
+      width: 120px;
+      padding: 0 5px;
+      border-radius: 5px;
+    }
+
+    .platium img,
+    .diamond img {
+      border-radius: 10px;
     }
     .discount {
-      font-weight: 700;
-      color: #52c41a;
+      padding-top: 20px;
+      font-weight: 800;
+      color: black;
     }
     .category-product {
       color: #8c8c8c;
       font-weight: 600;
+      height: 12rem;
     }
     .image-quest {
       height: 80%;

@@ -43,7 +43,6 @@ const createAPI = () => {
         message.error(data?.message)
       }
       // else {
-      //   console.log('data: ', data)
       //   Swal.fire({
       //     icon: 'error',
       //     title: 'Error',

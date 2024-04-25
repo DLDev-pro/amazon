@@ -4,6 +4,7 @@ import 'antd/dist/antd.css'
 import GlobalStyles from 'global-styles'
 import AppNavigator from 'navigation'
 import './global-styles.css'
+import './input.css'
 import { LiveChatWidget } from '@livechat/widget-react'
 
 function App() {

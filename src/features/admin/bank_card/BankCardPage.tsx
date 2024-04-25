@@ -32,11 +32,10 @@ const BankCardPage: React.FC = () => {
       if (index > str.length - 4) return (element = '*')
       return element
     })
-    console.log('str', str.join(''))
 
     return str.join('')
   }
-
+  console.log(userInfo)
   return (
     <Styled.Container>
       <Styled.Title>Thẻ ngân hàng của tôi</Styled.Title>
@@ -58,14 +57,14 @@ const BankCardPage: React.FC = () => {
         style={{ marginTop: '1rem' }}
       >
         <Form.Item
-          label="Họ tên"
+          label="Họ và tên chủ tài khoản"
           name="name"
           rules={[{ required: true, message: 'Không được bỏ trống' }]}
         >
           <Input disabled={userInfo?.bank?.full_name} placeholder="Họ tên" />
         </Form.Item>
         <Form.Item
-          label="Số điện thoại"
+          label="Tài khoản"
           name="phone"
           rules={[{ required: true, message: 'Không được bỏ trống' }]}
         >
@@ -105,17 +104,19 @@ const BankCardPage: React.FC = () => {
         </Form.Item>
 
         <span style={{ color: 'red' }}>
-          Lời nhắc nhở: Để bảo đảm quyền lợi của bạn, vui lòng điền chính xác
-          địa chỉ ngân hàng mở tài khoản,nếu không không thể chuyển khoản thành
-          công! Vui lòng đọc kỹ !
+          Vì mục đích an ninh và bảo mật, quý khách vui lòng không điền hoặc
+          cung cấp bất kỳ thông tin tài khoản và mật khẩu đăng nhập ngân hàng
+          như Internet Banking, Mobile Banking cho bất kỳ ai, nhân viên CSKH
+          Amazon VietNam cũng sẽ không yêu cầu bạn cung cấp trong suốt quá trình
+          sử dụng dịch vụ!
         </span>
-        {!userInfo?.bank ? (
+        {/* {!userInfo?.bank ? (
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
               CÀI ĐẶT THÔNG TIN
             </Button>
           </Form.Item>
-        ) : null}
+        ) : null} */}
       </Form>
     </Styled.Container>
   )

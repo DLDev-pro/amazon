@@ -30,8 +30,7 @@ const MyGroupPage: React.FC = () => {
   return (
     <Styled.Container>
       <Styled.Title>Nhóm của tôi</Styled.Title>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Row style={{ marginTop: '1rem', width: '50%' }} justify="space-around">
+      {/* <Row style={{ marginTop: '1rem', width: '50%' }} justify="space-around">
           <Col md={12} style={styleCol}>
             <div>
               <div>Số dư của nhóm</div>
@@ -62,16 +61,13 @@ const MyGroupPage: React.FC = () => {
               <div>{formatPrice(data.totalData?.order_commission)}</div>
             </div>
           </Col>
-          <Col md={12} style={styleCol}>
-            <div>
-              <div>Số người nhóm tôi</div>
-              <div>{formatPrice(data.totalData?.total_customer)}</div>
-            </div>
-          </Col>
-        </Row>
-      </div>
+          <Col md={12} style={styleCol}></Col>
+        </Row> */}
+      <span>
+        Số người đã mời: <b>{formatPrice(data.totalData?.total_customer)}</b>
+      </span>
 
-      <Styled.ContainerTabs>
+      {/* <Styled.ContainerTabs>
         <Styled.HeaderTabs>
           <Col
             span={8}
@@ -112,7 +108,7 @@ const MyGroupPage: React.FC = () => {
             Cấp 3
           </Col>
         </Styled.HeaderTabs>
-      </Styled.ContainerTabs>
+      </Styled.ContainerTabs> */}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ width: '80%' }}>
           {data?.dataUsers.length ? (
@@ -156,7 +152,7 @@ const MyGroupPage: React.FC = () => {
               ))}
             </>
           ) : (
-            <Styled.Empty>Trang này không có lịch sử</Styled.Empty>
+            <div></div>
           )}
         </div>
       </div>

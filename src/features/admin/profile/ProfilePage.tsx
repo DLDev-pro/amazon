@@ -1,31 +1,19 @@
-import {
-  FileDoneOutlined,
-  ShoppingCartOutlined,
-  UsergroupDeleteOutlined,
-} from '@ant-design/icons'
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button, Col, Divider, Image, Layout, message, Row } from 'antd'
 import R from 'assets'
 import { ADMIN_ROUTER_PATH, SESSION_KEY } from 'common/config'
 import { getUserInfoAction } from 'features/auth/AuthSlice'
 import Cookie from 'js-cookie'
-import React, { useEffect } from 'react'
-import { AiOutlineLock, AiOutlineLogout } from 'react-icons/ai'
-import { BiLocationPlus, BiSupport } from 'react-icons/bi'
-import {
-  BsCardChecklist,
-  BsFillDiagram3Fill,
-  BsLock,
-  BsReply,
-} from 'react-icons/bs'
-import { FaAddressCard, FaMoneyBillAlt } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react'
+import { IoIosArrowForward } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from 'redux/store/store'
+import { getListLevel } from 'services/api/CommonApi'
 import Swal from 'sweetalert2'
 import { CHAT_LINK } from 'utils/constants'
-import { formatSensitiveText } from 'utils/funcHelper'
 import history from 'utils/history'
-import { formatPrice } from 'utils/ruleForm'
 
 const { Content } = Layout
 
@@ -33,7 +21,6 @@ const HeadTitle = ({ title }: { title: string }) => {
   return (
     <div
       style={{
-        backgroundColor: 'lightgray',
         fontWeight: 'bold',
         padding: 10,
         marginTop: 10,
@@ -45,7 +32,7 @@ const HeadTitle = ({ title }: { title: string }) => {
   )
 }
 
-const OptionSelect = ({
+const OptionSelectVertical = ({
   icon,
   title,
   to,
@@ -65,7 +52,49 @@ const OptionSelect = ({
     >
       <Link
         to={to}
-        style={{ color: 'black', alignItems: 'center', display: 'flex' }}
+        style={{
+          color: 'black',
+          alignItems: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          fontWeight: 'bold',
+        }}
+      >
+        {icon}
+        <div style={{ width: 5, marginTop: 5 }}></div>
+        {title}
+      </Link>
+    </div>
+  )
+}
+
+const OptionSelectHorizontal = ({
+  icon,
+  title,
+  to,
+}: {
+  icon: unknown
+  title: string
+  to: string
+}) => {
+  return (
+    <div
+      style={{
+        padding: 5,
+        paddingLeft: 12,
+        marginTop: 5,
+        fontSize: 11.5,
+      }}
+    >
+      <Link
+        to={to}
+        style={{
+          color: 'black',
+          alignItems: 'center',
+          display: 'flex',
+          textAlign: 'center',
+          fontWeight: 'bold',
+        }}
       >
         {icon}
         <div style={{ width: 5 }}></div>
@@ -78,67 +107,122 @@ const OptionSelect = ({
 const ProfilePage: React.FC = () => {
   const { userInfo } = useAppSelector(state => state.AuthReducer)
   const dispatch = useDispatch()
+  const [listRank, setListRank] = useState<Array<any>>([])
+  const [currentLevelIdx, setCurrentLevelIdx] = useState<number>(0)
 
+  const getData = async () => {
+    try {
+      const resData = (await getListLevel()).data
+      const ownLevel = userInfo?.level
+
+      const currentLevelData = resData.find((item: any) => item.key == ownLevel)
+      let currentLvIdx =
+        resData.indexOf(currentLevelData) == -1
+          ? 0
+          : resData.indexOf(currentLevelData)
+
+      setListRank(resData)
+      setCurrentLevelIdx(currentLvIdx)
+    } catch (err) {}
+  }
   useEffect(() => {
     dispatch(getUserInfoAction())
+    getData()
   }, [])
 
+  // console.log('userInfo', listRank[currentLevelIdx]?.price)
   return (
     <Content
       style={{
-        padding: '0 10px',
-        margin: '10px 0',
+        backgroundColor: '#e0dede',
       }}
     >
-      <Row justify="center">
-        <Col span="12">
+      <Row
+        justify="center"
+        align="middle"
+        style={{
+          backgroundImage: ` url(
+            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAAaCAYAAABb9hlrAAAAWElEQVRoge3RQQHAIBDAsGMasYB0dAwbfSQWss6+/5D1qWkTFCcoTlCcoDhBcYLiBMUJihMUJyhOUJygOEFxguIExQmKExQnKE5QnKA4QXGC4gTFCSqbmQcjtQLReG26xgAAAABJRU5ErkJggg==
+          )`,
+          borderBottomRightRadius: 10,
+          borderBottomLeftRadius: 10,
+        }}
+      >
+        <Col span="4">
           <Row align="middle">
             <Col>
               <Image
                 style={{ borderRadius: 5 }}
-                width={70}
-                height={70}
-                src={R.images.avt_placeholder}
+                width={60}
+                height={60}
+                src={R.images.unknown_avatar}
               />
-            </Col>
-            <Col style={{ marginLeft: 10 }}>
-              <Row style={{ height: '100%' }} align="middle">
-                <Col>
-                  <Row>
-                    <b style={{ fontSize: 20 }}>{userInfo?.name}</b>
-                  </Row>
-                  <Row>
-                    <b style={{ fontSize: 16 }}>
-                      Số điện thoại: {formatSensitiveText(userInfo?.phone, 4)}
-                    </b>
-                  </Row>
-                  <Row>
-                    <b style={{ fontSize: 16 }}>
-                      Số dư tài khoản:{' '}
-                      <b style={{ color: 'green' }}>{`$${
-                        formatPrice(userInfo?.balance) || 0
-                      }`}</b>
-                    </b>
-                  </Row>
-                  <Row>
-                    <b style={{ fontSize: 14, color: 'grey' }}>
-                      Mã mời: {userInfo?.reference_code || userInfo?.phone}
-                    </b>
-                  </Row>
-                </Col>
-              </Row>
             </Col>
           </Row>
         </Col>
-        <Col span="12">
-          <Row
-            justify="end"
-            align="middle"
-            style={{ height: '100%', padding: 10 }}
-          >
-            <Col>
+        <Col span="9">
+          <Col style={{ marginLeft: 10 }}>
+            <Row
+              style={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+              align="middle"
+              justify="center"
+            >
+              <Row>
+                {/* <b style={{ fontSize: 16 }}>Nguyễn văn a</b> */}
+                <b style={{ fontSize: 16 }}>{userInfo?.name}</b>
+              </Row>
+
+              <Row justify="center">
+                <b
+                  style={{
+                    fontSize: 12,
+                    textAlign: 'center',
+                  }}
+                >
+                  Mã mời: {userInfo?.reference_code || userInfo?.phone}
+                </b>
+              </Row>
+            </Row>
+          </Col>
+        </Col>
+        <Col span="6">
+          <Row align="top">
+            <img
+              src={
+                listRank[currentLevelIdx]?.price === 5000000
+                  ? R.images.tvbac
+                  : listRank[currentLevelIdx]?.price === 25000000
+                  ? R.images.tvvang
+                  : listRank[currentLevelIdx]?.price === 75000000
+                  ? R.images.tvbachkim
+                  : R.images.tvKimcuong
+              }
+              alt=""
+            />
+          </Row>
+        </Col>
+        <Col span="5">
+          <Row align="middle" style={{ height: '100%' }}>
+            <Col
+              style={{
+                width: '100%',
+              }}
+            >
               <Button
-                style={{ fontWeight: '700' }}
+                style={{
+                  fontWeight: '700',
+                  color: 'black',
+                  padding: 0,
+                  width: '100%',
+                  height: 'fit-content',
+                  borderRadius: 5,
+                  outline: 'none',
+                  backgroundColor: '#e3b40c',
+                }}
                 onClick={() => {
                   // history.push(ADMIN_ROUTER_PATH.SUPPORT)
                   window.open(CHAT_LINK)
@@ -147,8 +231,23 @@ const ProfilePage: React.FC = () => {
                 Nạp tiền
               </Button>
             </Col>
-            <Col>
+            <Col
+              style={{
+                width: '100%',
+                marginTop: 3,
+              }}
+            >
               <Button
+                style={{
+                  fontWeight: '700',
+                  color: 'black',
+                  padding: 0,
+                  width: '100%',
+                  height: 'fit-content',
+                  borderRadius: 5,
+                  outline: 'none',
+                  backgroundColor: '#e3b40c',
+                }}
                 onClick={() => {
                   dispatch(getUserInfoAction())
 
@@ -172,7 +271,6 @@ const ProfilePage: React.FC = () => {
                     }
                   }
                 }}
-                style={{ fontWeight: '700' }}
               >
                 Rút tiền
               </Button>
@@ -180,89 +278,247 @@ const ProfilePage: React.FC = () => {
           </Row>
         </Col>
       </Row>
-      <HeadTitle title="Thông tin cá nhân" />
-      {/* <OptionSelect
-        to={ADMIN_ROUTER_PATH.DELIVERY_ADDRESS}
-        title="Thông tin cá nhân"
-        icon={<BiLocationPlus />}
-      /> */}
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.BANK_CARD}
-        title="Thẻ ngân hàng"
-        icon={<BsCardChecklist />}
-      />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.MEMBER_RANK}
-        title="Cấp bậc hội viên"
-        icon={<BsFillDiagram3Fill />}
-      />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.DELIVERY_ADDRESS}
-        title="Địa chỉ"
-        icon={<FaAddressCard />}
-      />
-      <HeadTitle title="Lịch sử đơn hàng" />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.HISTORY}
-        title="Lịch sử săn đơn hàng"
-        icon={<FileDoneOutlined />}
-      />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.ORDER}
-        title="Bắt đầu săn đơn hàng"
-        icon={<ShoppingCartOutlined />}
-      />
-      <OptionSelect
-        to={`${ADMIN_ROUTER_PATH.MY_GROUP}?tabs=level_1`}
-        title="Nhóm của tôi"
-        icon={<BsFillDiagram3Fill />}
-      />
-      <HeadTitle title="Tài khoản" />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.HISTORY_TRANSACTION}
-        title="Lịch sử giao dịch"
-        icon={<FaMoneyBillAlt />}
-      />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.CHANGE_PASS}
-        title="Mật khẩu tài khoản"
-        icon={<AiOutlineLock />}
-      />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.DEPOSIT_PASS}
-        title="Mật khẩu vốn"
-        icon={<BsLock />}
-      />
-      <HeadTitle title="Liên hệ chăm sóc khác hàng" />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.SUPPORT}
-        title="Trung tâm chăm sóc khách hàng"
-        icon={<BiSupport />}
-      />
-      <OptionSelect
-        to={ADMIN_ROUTER_PATH.SUPPORT}
-        title="Ý kiến phản hồi"
-        icon={<BsReply />}
-      />
+
+      <div style={{ backgroundColor: 'white' }}>
+        <HeadTitle title="Lịch sử đơn hàng" />
+        <hr />
+        <Row
+          gutter={16}
+          style={{
+            padding: 10,
+          }}
+        >
+          <Col span={12}>
+            <OptionSelectHorizontal
+              to={ADMIN_ROUTER_PATH.HISTORY}
+              title="Lịch sử săn đơn hàng"
+              icon={<img src={R.images.lichsudon} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectHorizontal
+              to={ADMIN_ROUTER_PATH.ORDER}
+              title="Bắt đầu săn đơn hàng"
+              icon={<img src={R.images.sanhang} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectHorizontal
+              to={`${ADMIN_ROUTER_PATH.MY_GROUP}?tabs=level_1`}
+              title="Nhóm của tôi"
+              icon={<img src={R.images.nhomcuatoi} style={{ height: 24 }} />}
+            />
+          </Col>
+        </Row>
+      </div>
+
+      <div style={{ backgroundColor: 'white' }}>
+        <HeadTitle title={'Số dư tài khoản $' + userInfo?.balance} />
+        <hr />
+
+        <Row
+          gutter={16}
+          style={{
+            padding: 10,
+          }}
+        >
+          <Col span={12}>
+            <OptionSelectVertical
+              to={ADMIN_ROUTER_PATH.HISTORY_TRANSACTION}
+              title="Lịch sử nạp tiền"
+              icon={<img src={R.images.naptien} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectVertical
+              to={ADMIN_ROUTER_PATH.HISTORY_TRANSACTION}
+              title="Lịch sử rút tiền"
+              icon={<img src={R.images.ruttien} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectVertical
+              to={ADMIN_ROUTER_PATH.HISTORY_TRANSACTION}
+              title="Chi tiết thu chi"
+              icon={<img src={R.images.thuchi} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectVertical
+              to={ADMIN_ROUTER_PATH.DEPOSIT_PASS}
+              title="Mật khẩu vốn"
+              icon={<img src={R.images.mkvon} style={{ height: 24 }} />}
+            />
+          </Col>
+        </Row>
+      </div>
+      <div style={{ backgroundColor: 'white' }}>
+        <HeadTitle title="Thông tin cá nhân" />
+        <hr />
+
+        <Row
+          gutter={16}
+          style={{
+            padding: 10,
+          }}
+        >
+          <Col span={12}>
+            <OptionSelectVertical
+              to={ADMIN_ROUTER_PATH.BANK_CARD}
+              title="Thẻ ngân hàng"
+              icon={<img src={R.images.thenganhang} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectVertical
+              to={ADMIN_ROUTER_PATH.MEMBER_RANK}
+              title="Cấp bậc hội viên"
+              icon={<img src={R.images.hoivien} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectVertical
+              to={ADMIN_ROUTER_PATH.DELIVERY_ADDRESS}
+              title="Địa chỉ nhận hàng"
+              icon={<img src={R.images.diachi} style={{ height: 24 }} />}
+            />
+          </Col>
+          {/* unknown */}
+          <Col span={12}>
+            {/* <OptionSelectVertical
+              to={CHAT_LINK}
+              title="Tin nhắn từ hệ thống"
+              icon={<img src={R.images.tinnhan} style={{ height: 24 }} />}
+            /> */}
+            <div
+              style={{
+                padding: 5,
+                paddingLeft: 12,
+                marginTop: 5,
+                fontSize: 14,
+              }}
+            >
+              <a
+                href={CHAT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'black',
+                  alignItems: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  fontWeight: 'bold',
+                }}
+              >
+                <img src={R.images.tinnhan} style={{ height: 24 }} />
+                <div style={{ width: 5, marginTop: 5 }}></div>
+                Tin nhắn từ hệ thống
+              </a>
+            </div>
+          </Col>
+        </Row>
+      </div>
+      <div style={{ backgroundColor: 'white' }}>
+        <HeadTitle title="Liên hệ chăm sóc khác hàng" />
+        <hr />
+        <Row
+          gutter={16}
+          style={{
+            padding: 10,
+          }}
+        >
+          <Col span={12}>
+            <OptionSelectHorizontal
+              to={ADMIN_ROUTER_PATH.SUPPORT}
+              title="Trung tâm chăm sóc khách hàng"
+              icon={<img src={R.images.dvcskh} style={{ height: 24 }} />}
+            />
+          </Col>
+
+          <Col span={12}>
+            <OptionSelectHorizontal
+              to={ADMIN_ROUTER_PATH.SUPPORT}
+              title="Ý kiến phản hồi"
+              icon={<img src={R.images.ykien} style={{ height: 24 }} />}
+            />
+          </Col>
+        </Row>
+      </div>
       <Divider style={{ margin: 5 }} />
       <div
         style={{
-          padding: 5,
+          padding: 10,
+          paddingLeft: 12,
+          marginTop: 5,
+          backgroundColor: 'white',
+        }}
+      >
+        <a
+          style={{
+            color: 'black',
+            fontSize: 16,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 5,
+            fontWeight: 'bold',
+          }}
+        >
+          <span>Quốc gia/Khu vực</span>
+          <p
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <select name="countries" id="">
+              <option value="VN">Việt Nam</option>
+              <option value="JP">Nhật Bản</option>
+              <option value="EN">USA</option>
+            </select>
+            <IoIosArrowForward />
+          </p>
+        </a>
+      </div>
+      <Divider style={{ margin: 5 }} />
+      <div
+        style={{
+          padding: 10,
           paddingLeft: 12,
           marginTop: 5,
           marginBottom: 80,
-        }}
-        onClick={() => {
-          const refWindow: any = window
-          if (refWindow.$chatwoot) refWindow.$chatwoot.reset()
-          Cookie.remove(SESSION_KEY.SESSION)
-          message.success('Đăng xuất')
-          history.replace('/')
+          backgroundColor: 'white',
         }}
       >
-        <a style={{ color: 'black', fontSize: 18 }}>
-          <AiOutlineLogout /> <b>Đăng xuất</b>
-        </a>
+        <div
+          style={{
+            color: 'black',
+            fontSize: 16,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 5,
+            fontWeight: 'bold',
+          }}
+        >
+          <Link to={ADMIN_ROUTER_PATH.CHANGE_PASS}>Mật khẩu đăng nhập</Link>
+          <p
+            onClick={() => {
+              alert('Đăng xuất')
+              // const refWindow: any = window
+              // if (refWindow.$chatwoot) refWindow.$chatwoot.reset()
+              // Cookie.remove(SESSION_KEY.SESSION)
+              // message.success('Đăng xuất')
+              // history.replace('/')
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            Đăng xuất <IoIosArrowForward />
+          </p>
+        </div>
       </div>
     </Content>
   )

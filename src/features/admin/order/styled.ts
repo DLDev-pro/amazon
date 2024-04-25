@@ -6,6 +6,7 @@ export const WhiteBox = styled.div`
   box-shadow: rgb(17 17 26 / 10%) 0px 1px 0px, rgb(17 17 26 / 10%) 0px 8px 24px,
     rgb(17 17 26 / 10%) 0px 16px 48px;
   border-radius: 12px;
+  position: relative;
 `
 
 export const Title = styled.div`
@@ -13,6 +14,7 @@ export const Title = styled.div`
   font-weight: 500;
   display: flex;
   align-items: center;
+  justify-content: center;
 `
 
 export const ImageBlock = styled.div`
@@ -32,8 +34,7 @@ export const InfoBlock = styled(Col)`
   align-items: center;
   font-size: 16px;
   span {
-    font-weight: 700;
-    color: var(--second-color);
+    color: #fc0303;
   }
 `
 
@@ -41,6 +42,7 @@ export const NotificationBlock = styled.div`
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 `
 
 export const Note = styled.div`
@@ -188,7 +190,6 @@ export const SendBtn = styled(Button)`
 
 export const StartBtn = styled(Button)`
   font-size: 20px;
-  border-radius: 10px;
   font-weight: 500;
 `
 export const BillContainer = styled.div`

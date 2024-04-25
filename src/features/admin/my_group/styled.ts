@@ -6,8 +6,10 @@ export const Container = styled.div`
   padding: 1rem 0;
 `
 
-export const Title = styled.span`
+export const Title = styled.p`
   font-size: 20px;
+  text-align: center;
+  font-weight: 700;
 `
 
 export const ColStyled = styled(Col)`

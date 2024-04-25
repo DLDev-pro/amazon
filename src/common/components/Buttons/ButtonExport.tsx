@@ -40,8 +40,6 @@ class ButtonExport extends Component<IProps, IState> {
       SheetNames: this.props.sheetName,
     }
 
-    console.log(wb)
-
     const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
     const data = new Blob([excelBuffer], { type: this.fileType })
     FileSaver.saveAs(data, this.props.fileName + this.fileExtension)

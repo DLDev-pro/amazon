@@ -19,39 +19,63 @@ const contentStyle: React.CSSProperties = {
 
 const QuestComp: React.FC<Props> = ({ data, isValid }) => {
   const history = useHistory()
-
   return (
-    <Styled.WarpQuest xs={24} lg={12}>
+    <Styled.WarpQuest
+      xs={24}
+      lg={24}
+      style={{
+        padding: '0 6px',
+        marginBottom: 10,
+      }}
+    >
       <div className="main-quest">
-        <span className="rank-name">{data?.name}</span>
-        <span className="discount">{data?.commission_percent}%</span>
+        <span
+          // className="rank-name"
+          className={`rank-name ${
+            data.price === 75000000
+              ? 'platium'
+              : data.price === 120000000
+              ? 'diamond'
+              : ''
+          }`}
+        >
+          {/* {data?.name} */}
+          <img
+            src={
+              data.price === 5000000
+                ? R.images.tvbac
+                : data.price === 25000000
+                ? R.images.tvvang
+                : data.price === 75000000
+                ? R.images.tvbachkim
+                : R.images.tvKimcuong
+            }
+            alt=""
+          />
+        </span>
+        <span className="discount">Hoa hồng {data?.commission_percent}%</span>
         <span style={{ marginBottom: 5 }} className="category-product">
           {data?.category?.join(' | ')}
         </span>
-        <span className="image-quest">
-          <Carousel autoplay>
-            {data?.background_urls.map((img: any) => (
-              <div>
-                <img
-                  alt="banner"
-                  src={`${process.env.REACT_APP_IMG_URL}${img}`}
-                  crossOrigin={'anonymous'}
-                  style={contentStyle}
-                />
-              </div>
-            ))}
-          </Carousel>
-        </span>
-        <Styled.ButtonStyled
-          onClick={() => {
-            if (isValid)
-              history.push(`${ADMIN_ROUTER_PATH.ORDER}?key=${data.key}`)
-            else history.push(ADMIN_ROUTER_PATH.MEMBER_RANK)
-          }}
-          icon={!isValid && <LockOutlined />}
-        >
-          {isValid ? 'Đang hoạt động' : 'Mở khoá cấp độ'}
-        </Styled.ButtonStyled>
+        <div className="active">
+          <img src={R.images.logo_web} alt="" />
+          {!isValid && (
+            <div>
+              <div className="overlay"></div>
+              <Styled.ButtonStyled
+                className="text-overlay"
+                onClick={() => {
+                  if (isValid)
+                    history.push(`${ADMIN_ROUTER_PATH.ORDER}?key=${data.key}`)
+                  else history.push(ADMIN_ROUTER_PATH.MEMBER_RANK)
+                }}
+                icon={!isValid && <LockOutlined />}
+              >
+                {isValid ? '' : 'Chờ nâng cấp'}
+              </Styled.ButtonStyled>
+            </div>
+          )}
+        </div>
       </div>
     </Styled.WarpQuest>
   )

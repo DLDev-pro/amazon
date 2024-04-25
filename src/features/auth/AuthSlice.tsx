@@ -29,7 +29,6 @@ export const authSlice = createSlice({
   reducers: {
     setLoading: (state, action) => {},
     setData: (state, action) => {
-      console.log(state, action, 'ahiahhi')
       state.data = action.payload
     },
     setError: (state, action) => {},

@@ -18,7 +18,6 @@ const BillOrder: React.FC = () => {
   const location: any = useLocation()
 
   useEffect(() => {
-    console.log('location.state: ', location.state)
     if (location.state.own_level) {
       getData(location.state.own_level)
     } else {

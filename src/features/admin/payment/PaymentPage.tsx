@@ -46,7 +46,6 @@ const PaymentPage: React.FC = () => {
   }
 
   const onFinish = (values: any) => {
-    console.log(values)
   }
 
   useEffect(() => {

@@ -6,7 +6,7 @@ const { Content } = Layout
 
 const BodyContainer: React.FC = ({ children }) => {
   return (
-    <Content className="wrap-container">
+    <Content className="wrap-container" style={{}}>
       <div className="main-container">{children}</div>
     </Content>
   )

@@ -22,20 +22,22 @@ export const ContainerTabs = styled.div`
 
 export const HeaderTabs = styled(Row)`
   width: 100%;
-  background-color: var(--primary-color);
-  padding: 12px;
+  /* background-color: var(--primary-color); */
+  padding: 6px 0;
   display: flex;
   justify-content: space-between;
   .title-tabs {
-    padding: 4px;
+    font-size: 15px;
+    font-weight: 700;
     text-align: center;
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #c4a6a7;
   }
   .title-tabs.active {
-    color: var(--second-color);
+    color: #ff3c61;
     font-weight: 600;
   }
 `

@@ -9,22 +9,26 @@ import { useDispatch } from 'react-redux'
 import Cookies from 'js-cookie'
 import { SESSION_KEY } from 'common/config'
 import { Layout } from 'antd'
-import { HeaderContainer, FooterContainer } from 'common/container'
+import { FooterContainer } from 'common/container'
 import BodyContainer from 'common/container/BodyContainer'
 import { ChatwootWidget } from 'features/ChatwootWidget'
+import { useAppSelector } from 'redux/store/store'
+import R from 'assets'
 
+import { Row, Col, Typography, Image } from 'antd'
+const { Title, Paragraph, Text } = Typography
 const { Header, Footer } = Layout
 
 export default function AppNavigator() {
   const cookie = Cookies.get(SESSION_KEY.SESSION)
   const dispatch = useDispatch()
+
   if (cookie) dispatch(getUserInfoAction())
 
   const MainNavigator = () => (
     <Layout>
-      <Header style={{ backgroundColor: 'var(--primary-color)' }}>
-        <HeaderContainer />
-      </Header>
+      {/* <Header style={{ backgroundColor: 'var(--primary-color)' }}>
+      </Header> */}
       <BodyContainer>
         {screenRouter.map((item, index) => {
           return (

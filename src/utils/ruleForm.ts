@@ -13,8 +13,6 @@ export function formatPrice(num: any) {
   )
     return 0
 
-  console.log(typeof num)
-  console.log(Math.round((num + Number.EPSILON) * 100) / 100)
   var result = (Math.round((num + Number.EPSILON) * 100) / 100)
     .toString()
     .replace(/,/g, '')

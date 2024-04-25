@@ -7,6 +7,7 @@ import { ADMIN_ROUTER_PATH } from 'common/config'
 import { useAppSelector } from 'redux/store/store'
 import Swal from 'sweetalert2'
 import { CHAT_LINK } from 'utils/constants'
+import R from 'assets'
 
 const QuickAction: React.FC = () => {
   const { userInfo } = useAppSelector(state => state.AuthReducer)
@@ -19,13 +20,25 @@ const QuickAction: React.FC = () => {
     >
       <Styled.ActionBlock
         onClick={() => {
-          history.push(ADMIN_ROUTER_PATH.MEMBER_RANK)
+          alert('Vòng quay may mắn')
         }}
-        xs={8}
-        md={5}
+        xs={6}
+        md={4}
       >
         <div className="main-action">
-          <CrownIcon style={StyleIcon} />
+          <img src={R.images.vongquay} alt="" />
+          Vòng quay may mắn
+        </div>
+      </Styled.ActionBlock>
+      <Styled.ActionBlock
+        onClick={() => {
+          history.push(ADMIN_ROUTER_PATH.MEMBER_RANK)
+        }}
+        xs={6}
+        md={4}
+      >
+        <div className="main-action">
+          <img src={R.images.viloinhuan} alt="" />
           Nâng cấp nhanh
         </div>
       </Styled.ActionBlock>
@@ -34,11 +47,11 @@ const QuickAction: React.FC = () => {
           // history.push(ADMIN_ROUTER_PATH.SUPPORT)
           window.open(CHAT_LINK)
         }}
-        xs={8}
-        md={5}
+        xs={6}
+        md={4}
       >
         <div className="main-action">
-          <CoinIcon style={StyleIcon} />
+          <img src={R.images.nap} alt="" />
           Nạp nhanh
         </div>
       </Styled.ActionBlock>
@@ -64,11 +77,11 @@ const QuickAction: React.FC = () => {
             }
           }
         }}
-        xs={8}
-        md={5}
+        xs={6}
+        md={4}
       >
         <div className="main-action">
-          <BankIcon style={StyleIcon} />
+          <img src={R.images.rut} alt="" />
           Rút nhanh
         </div>
       </Styled.ActionBlock>

@@ -51,7 +51,6 @@ const HistoryPage: React.FC = () => {
       if (params.status == 'Frozen') {
         let item: any = await Cookies.get('block_order')
         item = JSON.parse(item)
-        console.log('Frozen', item)
         if (item?.is_block_create_order == 0) {
           dataOrderBlock = [JSON.parse(item)]
           return
@@ -65,7 +64,7 @@ const HistoryPage: React.FC = () => {
 
   const getColorForTagStatus = (status: string) => {
     switch (status) {
-      case 'Processing':
+      case 'Processi-ng':
         return { color: 'var(--orange-1)', text: 'Chờ xử lý' }
       case 'Success':
         return { color: 'var(--green-1)', text: 'Đã hoàn thành' }
@@ -78,10 +77,6 @@ const HistoryPage: React.FC = () => {
 
   return (
     <Styled.ContainerHistory>
-      <Styled.TopTitle>
-        <div className="title">Lịch sử đơn hàng</div>
-        <span>Dữ liệu được cung cấp bởi trang chính thức</span>
-      </Styled.TopTitle>
       <Styled.ContainerTabs>
         <Styled.HeaderTabs>
           <Col
@@ -93,7 +88,7 @@ const HistoryPage: React.FC = () => {
               })
             }}
           >
-            Toàn bộ
+            Tất cả
           </Col>
           <Col
             span={6}
@@ -107,7 +102,22 @@ const HistoryPage: React.FC = () => {
               })
             }}
           >
-            Chờ xử lý
+            Kiểm duyệt
+          </Col>
+
+          <Col
+            span={6}
+            className={`title-tabs ${
+              params.status === 'Success' ? 'active' : ''
+            }`}
+            onClick={() => {
+              history.push({
+                pathname: ADMIN_ROUTER_PATH.HISTORY,
+                search: '?status=Success',
+              })
+            }}
+          >
+            Thành công
           </Col>
           <Col
             span={6}
@@ -121,24 +131,20 @@ const HistoryPage: React.FC = () => {
               })
             }}
           >
-            Đóng băng
-          </Col>
-          <Col
-            span={6}
-            className={`title-tabs ${
-              params.status === 'Success' ? 'active' : ''
-            }`}
-            onClick={() => {
-              history.push({
-                pathname: ADMIN_ROUTER_PATH.HISTORY,
-                search: '?status=Success',
-              })
-            }}
-          >
-            Đã hoàn thành
+            Thất bại
           </Col>
         </Styled.HeaderTabs>
       </Styled.ContainerTabs>
+      <hr
+        style={{
+          color: 'var(--primary-color)',
+          backgroundColor: 'var(--primary-color)',
+          height: '0.5px',
+          width: '95%',
+          margin: '0 auto',
+          border: 'none',
+        }}
+      />
 
       <Styled.ContentTab>
         {listOrder?.map((item: any) => (

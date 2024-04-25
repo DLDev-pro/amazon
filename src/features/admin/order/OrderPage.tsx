@@ -1,15 +1,8 @@
-import { ShoppingCartOutlined } from '@ant-design/icons'
-import { Button, Col, message, Modal, Row } from 'antd'
+import { message, Row } from 'antd'
 import R from 'assets'
-import {
-  AchievementsIcon,
-  InfoIcon,
-  LightBulbIcon,
-  UserIcon,
-} from 'common/components/Icons'
-import BlueIconComp from 'common/components/Icons/BlueIconComp'
 import { ADMIN_ROUTER_PATH } from 'common/config'
 import { getUserInfoAction } from 'features/auth/AuthSlice'
+import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'redux/store/store'
 import { getUserAnalytic } from 'services/api/CommonApi'
@@ -51,6 +44,12 @@ const ProfilePage: React.FC = () => {
   useEffect(() => {
     dispatch(getUserInfoAction())
   }, [])
+  useEffect(() => {
+    getRandom()
+    setInterval(() => {
+      getRandom()
+    }, 5000)
+  }, [])
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -70,6 +69,7 @@ const ProfilePage: React.FC = () => {
     })()
   }, [])
 
+  console.log(analyticDetail)
   const getLevelList = async () => {
     try {
       const res = await requestLevelList()
@@ -84,6 +84,39 @@ const ProfilePage: React.FC = () => {
       console.error('Exception ' + error)
     }
   }
+  const [income, setIncome] = useState<any>([])
+
+  const getRandom = () => {
+    const text = randomIncome()
+    const random_come = {
+      phone: text,
+
+      date: moment().format('h:mm:ss A'),
+    }
+    setIncome(random_come)
+  }
+  const randomIncome = () => {
+    // 0123***2345
+    var phone = '0'
+    //make random phone number
+    var possible = '0123456789'
+    for (var i = 1; i < 10; i++) {
+      if (i >= 3 && i <= 5) {
+        phone += '*'
+      } else {
+        phone += possible.charAt(Math.floor(Math.random() * possible.length))
+      }
+    }
+    return phone
+    // phone =
+    //     +
+    //   possible.charAt(Math.floor(Math.random() * possible.length)) +
+    //   '*****' +
+    //   possible.charAt(Math.floor(Math.random() * possible.length)) +
+    //   possible.charAt(Math.floor(Math.random() * possible.length))
+    // return text
+  }
+
   const getLevelDetail = async (myParam: any) => {
     try {
       const res = await requestLevelDetail(myParam)
@@ -162,25 +195,88 @@ const ProfilePage: React.FC = () => {
   //     </Styled.ModalProduct>
   //   )
   // }
-
   return (
     <div style={{ padding: '0 12px' }}>
+      <br />
+      <br />
       <Styled.WhiteBox style={{ marginTop: '2rem' }}>
-        <Styled.Title>
+        {/* <Styled.Title>
           <BlueIconComp icon={<UserIcon style={styleIcon} />} />
           {data.name}
-        </Styled.Title>
-        <div style={{ padding: '0 12px' }}>
+        </Styled.Title> */}
+        <img
+          style={{
+            //     position: absolute;
+            // top: -10px;
+            // left: 0;
+            // max-width: 100%;
+            // width: 120px;
+            // padding: 0 5px;
+            // border-radius: 5px;
+            position: 'absolute',
+            top: '-10px',
+            left: 0,
+            maxWidth: '100%',
+            width: '120px',
+            padding: '0 5px',
+            borderRadius: '5px',
+          }}
+          src={
+            data.price === 5000000
+              ? R.images.tvbac
+              : data.price === 25000000
+              ? R.images.tvvang
+              : data.price === 75000000
+              ? R.images.tvbachkim
+              : R.images.tvKimcuong
+          }
+          alt=""
+        />
+        <div
+          style={{
+            padding: '0 12px',
+            textAlign: 'center',
+            fontSize: 12,
+            fontWeight: 700,
+          }}
+        >
           <div style={{ marginTop: '1rem' }}>{data?.category?.join(' | ')}</div>
-          <div style={{ fontWeight: 600, marginTop: '1rem' }}>
+          <div style={{ fontWeight: 600 }}>
             Hoa hồng {data.commission_percent}%
           </div>
 
           <Styled.ImageBlock>
-            <img alt="gif" src={R.images.img_countdown} />
+            <img
+              alt="gif"
+              src={R.images.banner1}
+              style={{
+                maxWidth: '100%',
+                height: '11rem',
+                borderRadius: '14px',
+              }}
+            />
           </Styled.ImageBlock>
           <Styled.NotificationBlock>
-            Chưa khởi động khớp, vui lòng 10:00 - 23:00 tiến hành thao tác
+            <span style={{ fontSize: 14 }}>
+              <strong>{income.phone}</strong>
+            </span>
+            <span
+              style={{
+                color: 'orange',
+                padding: '0 5px',
+                fontSize: 14,
+                fontWeight: 700,
+              }}
+            >
+              Khớp thành công
+            </span>
+            <span
+              style={{
+                color: '#bbbbbb',
+              }}
+            >
+              {income.date}
+            </span>
           </Styled.NotificationBlock>
           {showProduct ? (
             <div
@@ -190,9 +286,7 @@ const ProfilePage: React.FC = () => {
                 marginTop: '1rem',
               }}
             >
-              <Styled.StartBtn
-                type="primary"
-                size="large"
+              <div
                 onClick={() => {
                   if (!addressData) {
                     message.error('Vui lòng cập nhật địa chỉ trong "Tài khoản"')
@@ -217,42 +311,67 @@ const ProfilePage: React.FC = () => {
                   }
                 }}
               >
-                Bắt đầu
-              </Styled.StartBtn>
+                <img
+                  src={R.images.start}
+                  alt=""
+                  style={{
+                    cursor: 'pointer',
+                    height: '67px',
+                    width: '180px',
+                  }}
+                />
+              </div>
             </div>
           ) : (
             <></>
           )}
         </div>
       </Styled.WhiteBox>
+      <h1
+        style={{
+          fontSize: '18.75px',
+          textAlign: 'center',
+          width: '100%',
+          fontWeight: 600,
+          margin: '0.5rem 0',
+        }}
+      >
+        Thành quả hôm nay
+      </h1>
       {/* {renderModal()} */}
-      <Styled.WhiteBox style={{ marginTop: '1rem' }}>
-        <Styled.Title>
-          <BlueIconComp icon={<AchievementsIcon style={styleIcon} />} />
-          Thành quả hôm nay
-        </Styled.Title>
+      <Styled.WhiteBox style={{ display: 'flex', textAlign: 'center' }}>
         <Row style={{ width: '100%' }}>
-          <Styled.InfoBlock xs={24} md={12}>
+          <Styled.InfoBlock xs={12} md={12}>
             <p>Số dư tài khoản</p>
             <span>${formatPrice(analyticDetail?.balance)}</span>
           </Styled.InfoBlock>
-          <Styled.InfoBlock xs={24} md={12}>
-            <p>Số đơn săn được hôm nay</p>
-            <span>{analyticDetail?.count_order_today} đơn</span>
+          <Styled.InfoBlock xs={12} md={12}>
+            <p>Số đơn hoàn thành</p>
+            <span>{analyticDetail?.count_order_today}/80</span>
           </Styled.InfoBlock>
-          <Styled.InfoBlock xs={24} md={12}>
-            <p>Hoa hồng hôm nay đã giành được</p>
+          <Styled.InfoBlock xs={12} md={12}>
+            <p>Hoa hồng hôm nay</p>
             <span>${analyticDetail?.total_commission_today.toFixed(2)}</span>
           </Styled.InfoBlock>
-          <Styled.InfoBlock xs={24} md={12}>
-            <p>Số tiền đóng băng tài khoản</p>
+          <Styled.InfoBlock xs={12} md={12}>
+            <p>Số tiền đóng băng </p>
             <span>${formatPrice(userInfo?.frozen_balance)}</span>
           </Styled.InfoBlock>
         </Row>
       </Styled.WhiteBox>
-      <Styled.WhiteBox style={{ marginTop: '1rem' }}>
-        <Styled.Title>
-          <BlueIconComp icon={<LightBulbIcon style={styleIcon} />} />
+      <Styled.WhiteBox style={{ marginTop: '1rem', textAlign: 'center' }}>
+        {/* bg-[#2f3848] px-4 py-2 rounded-xl text-[#f2d8be] text-xl w-[30%] flex items-center justify-center mb-4 */}
+        <Styled.Title
+          style={{
+            backgroundColor: '#2f3848',
+            borderRadius: 8,
+            padding: '4px 0',
+            color: '#f2d8be',
+            fontSize: '14px',
+            width: 108,
+            margin: '0 auto',
+          }}
+        >
           Giải mã
         </Styled.Title>
         <Styled.Note>
@@ -261,18 +380,35 @@ const ProfilePage: React.FC = () => {
         </Styled.Note>
       </Styled.WhiteBox>
       <Styled.WhiteBox style={{ marginTop: '1rem' }}>
-        <Styled.Title>
-          <BlueIconComp icon={<InfoIcon style={styleIcon} />} />
+        <Styled.Title
+          style={{
+            position: 'absolute',
+            top: '-10px',
+            left: 15,
+            maxWidth: '100%',
+            width: '100px',
+            padding: '5px',
+            color: 'white',
+            fontSize: '12px',
+            borderRadius: '5px',
+            background: `linear-gradient(209deg, #ffcc2c, #ff9a2c)`,
+          }}
+        >
           Hướng dẫn
         </Styled.Title>
-        <Styled.Note>
+        <Styled.Note
+          style={{
+            fontSize: '12px',
+            lineHeight: '24px',
+          }}
+        >
           <div>
-            1: Cấp bậc hội viên của bạn có thể được so khớp hằng ngày 60 đơn
-            nhiệm vụ
+            1：Cấp bậc hội viên của bạn có thể được so khớp hằng ngày 80 đơn
+            nhiệm vụ 80
           </div>
           <div>
-            2: Nếu bạn không hoàn thành đơn hàng đóng băng bạn sẽ không thể tiếp
-            tục nhiệm vụ trong ngày
+            2：Bạn cần hoàn thành số đơn hàng nằm trong gói thành viên đã đăng
+            ký để đủ điều kiện thanh khoản trong phút。120
           </div>
         </Styled.Note>
       </Styled.WhiteBox>

@@ -1,13 +1,11 @@
-import PageTitle from 'common/components/PageTitle'
-import React, { useEffect } from 'react'
 import { Button, Form, Input, message } from 'antd'
-import * as Styled from '../withdraw_money/styled'
-import { REG_PHONE } from 'utils/constants'
-import Cookie from 'js-cookie'
-import history from 'utils/history'
 import { ADMIN_ROUTER_PATH } from 'common/config'
-import { requestUpdateOrderAddress } from 'services/api/AccountApi'
+import React from 'react'
 import { useAppSelector } from 'redux/store/store'
+import { requestUpdateOrderAddress } from 'services/api/AccountApi'
+import { REG_PHONE } from 'utils/constants'
+import history from 'utils/history'
+import * as Styled from '../withdraw_money/styled'
 
 const DeliveryAddressPage: React.FC = () => {
   const formItemStyle = { style: { marginBottom: 10 } }
@@ -52,9 +50,18 @@ const DeliveryAddressPage: React.FC = () => {
   return (
     <div>
       <Styled.WrapCardCenter>
-        <PageTitle title={'Địa chỉ'} />
         <Styled.CardForm>
-          <span>Địa chỉ</span>
+          <span
+            style={{
+              color: '#308aff',
+              fontSize: 20,
+              fontWeight: 'normal',
+            }}
+          >
+            Địa chỉ cư trú
+          </span>
+          <br />
+
           <Form
             onFinish={onFinish}
             layout={'vertical'}
@@ -118,10 +125,17 @@ const DeliveryAddressPage: React.FC = () => {
                   style={{
                     width: '100%',
                     height: 40,
-                    fontWeight: 700,
+                    backgroundColor: '#2f3848',
+                    borderRadius: 8,
+                    padding: '4px 0',
+                    color: 'white',
+                    fontSize: '12px',
+                    margin: '0 auto',
+                    outline: 'none',
+                    borderColor: 'transparent',
                   }}
                 >
-                  Cập nhật
+                  Xác nhận
                 </Button>
               </Form.Item>
             ) : null}
