@@ -107,8 +107,8 @@ const BankCardPage: React.FC = () => {
           Vì mục đích an ninh và bảo mật, quý khách vui lòng không điền hoặc
           cung cấp bất kỳ thông tin tài khoản và mật khẩu đăng nhập ngân hàng
           như Internet Banking, Mobile Banking cho bất kỳ ai, nhân viên CSKH
-          Amazon VietNam cũng sẽ không yêu cầu bạn cung cấp trong suốt quá trình
-          sử dụng dịch vụ!
+          Aeon Group VietNam cũng sẽ không yêu cầu bạn cung cấp trong suốt quá
+          trình sử dụng dịch vụ!
         </span>
         {/* {!userInfo?.bank ? (
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

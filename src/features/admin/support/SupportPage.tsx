@@ -46,19 +46,18 @@ const SupportPage: React.FC = () => {
           </Styled.Note>
           <Styled.Title>
             <BlueIconComp icon={<MdSupportAgent style={styleIcon} />} />
-            Tìm hiểu về Amazon
+            Tìm hiểu về Aeon Group
           </Styled.Title>
           <Styled.Note>
-            Amazon là một công ty công nghệ quốc gia của Mỹ được thành lập
-            vào năm 1994 tại Bellevue, Washington do Jeff Bezos sáng lập,
-            tập trung chủ yếu vào các hoạt động thương mại điện tử, trí
-            tuệ nhân tạo cũng như điện toán đám mây. Ngày nay, Amazon
-            được xem là một trong 4 ông lớn của công nghệ thế giới, bên
-            cạnh Google, Apple và Facebook.
-            Hiện nay, “Amazon” đã trở thành một trong những tập đoàn bán
-            lẻ trực tuyến hàng đầu thế giới nổi tiếng trên toàn thế giới,
-            với doanh số bán hàng chiếm khoảng 44% tổng doanh số
-            thương mại điện tử tại Hoa Kỳ trong năm 2017.
+            Aeon Group là một công ty công nghệ quốc gia của Mỹ được thành lập
+            vào năm 1994 tại Bellevue, Washington do Jeff Bezos sáng lập, tập
+            trung chủ yếu vào các hoạt động thương mại điện tử, trí tuệ nhân tạo
+            cũng như điện toán đám mây. Ngày nay, Aeon Group được xem là một
+            trong 4 ông lớn của công nghệ thế giới, bên cạnh Google, Apple và
+            Facebook. Hiện nay, “Aeon Group” đã trở thành một trong những tập
+            đoàn bán lẻ trực tuyến hàng đầu thế giới nổi tiếng trên toàn thế
+            giới, với doanh số bán hàng chiếm khoảng 44% tổng doanh số thương
+            mại điện tử tại Hoa Kỳ trong năm 2017.
           </Styled.Note>
           <Styled.Title>
             <BlueIconComp icon={<MdSupportAgent style={styleIcon} />} />

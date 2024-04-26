@@ -1,25 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { MdEmail } from 'react-icons/md'
-import { IoLocation } from 'react-icons/io5'
-import { FaPhoneAlt } from 'react-icons/fa'
-import { Row, Col, Divider } from 'antd'
+import { Carousel, Col, Drawer, Dropdown, Layout, Menu, Row } from 'antd'
 import React, { useRef, useState } from 'react'
-import { Layout, Menu, Dropdown, Button, Drawer, Carousel } from 'antd'
+import { FaPhoneAlt } from 'react-icons/fa'
+import { IoLocation } from 'react-icons/io5'
+import { MdEmail } from 'react-icons/md'
 // import { QRCode } from 'antd'
 import {
   DownOutlined,
   FacebookOutlined,
-  LeftOutlined,
   MenuOutlined,
   RedditOutlined,
-  RightOutlined,
   TwitterOutlined,
-  UnorderedListOutlined,
   YoutubeOutlined,
 } from '@ant-design/icons'
-import * as Styled from './styled'
-import images from 'assets/images'
 import R from 'assets'
+import * as Styled from './styled'
 
 const { Header, Footer, Content } = Layout
 const contentStyle: React.CSSProperties = {
@@ -100,7 +95,7 @@ const AboutPage = () => {
         title={
           <img
             src={R.images.logo_web}
-            alt="Amazon"
+            alt="Aeon Group"
             style={{ width: '100px', height: 'auto' }}
           />
         }
@@ -123,8 +118,8 @@ const AboutPage = () => {
           <strong>Thông tin tổng quan</strong>
         </h1>
         <p>
-          Thị trường Amazon là điểm đến cuối cùng cho mua sắm và giải trí tại
-          Việt Nam. Với sự đa dạng của các thương hiệu từ thời trang đến ẩm
+          Thị trường Aeon Group là điểm đến cuối cùng cho mua sắm và giải trí
+          tại Việt Nam. Với sự đa dạng của các thương hiệu từ thời trang đến ẩm
           thực, cùng với các khu vực giải trí rộng lớn, nơi này mang lại trải
           nghiệm đa dạng cho mọi lứa tuổi. Khách hàng có thể lựa chọn các sản
           phẩm chất lượng từ các thương hiệu uy tín, đồng thời tham gia vào các
@@ -169,9 +164,6 @@ const AboutPage = () => {
               </div>
               <div>
                 <img alt="banner" src={R.images.banner4} style={contentStyle} />
-              </div>
-              <div>
-                <img alt="banner" src={R.images.banner5} style={contentStyle} />
               </div>
             </Carousel>
           </div>
@@ -260,7 +252,7 @@ const AboutPage = () => {
                       </span>
                       Email:{' '}
                       <a rel="nofollow" href="#">
-                        amazon.cs@amazonmall-vn.com
+                        Aeon Group.cs@Aeon Groupmall-vn.com
                       </a>
                     </div>
                   </div>

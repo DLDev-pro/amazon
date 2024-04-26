@@ -212,7 +212,7 @@ const HomePage: React.FC = () => {
                     fontSize: '16px',
                   }}
                 >
-                  Amazon kính chào khách hàng!
+                  Aeon Group kính chào khách hàng!
                 </h1>
                 <p>
                   <span style={{ color: 'rgb(52, 152, 219)' }}>
@@ -246,8 +246,7 @@ const HomePage: React.FC = () => {
   }
   return (
     <div>
-      <AboutPage />
-      {/* {openPopup && <PopupModal />}
+      {openPopup && <PopupModal />}
       <HeaderContainer />
       <SlickBanner />
       <QuickAction />
@@ -272,7 +271,7 @@ const HomePage: React.FC = () => {
             </span>
           </Styled.UserIncomeList>
         ))}
-      </Styled.WrapUserIncomeList> */}
+      </Styled.WrapUserIncomeList>
     </div>
   )
 }

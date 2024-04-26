@@ -192,7 +192,7 @@ const HistoryPage: React.FC = () => {
                   }}
                   alt=""
                 />
-                Từ Amazon
+                Từ Aeon Group
               </div>
               <div className="name-product">{nameProduct}</div>
               <div className="inner-info">

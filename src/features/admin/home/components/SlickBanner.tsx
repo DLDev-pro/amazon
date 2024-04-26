@@ -50,9 +50,6 @@ const SlickBanner: React.FC = () => {
           <div>
             <img alt="banner" src={R.images.banner4} style={contentStyle} />
           </div>
-          <div>
-            <img alt="banner" src={R.images.banner5} style={contentStyle} />
-          </div>
         </Carousel>
       </div>
     </Styled.WrapSlickBanner>

@@ -26,7 +26,7 @@ function Register(props: any) {
   const onFinish = async (values: any) => {
     if (!reading) {
       message.error(
-        'Vui lòng đọc và đồng ý với thoả thuận mở tài khoản của Amazon'
+        'Vui lòng đọc và đồng ý với thoả thuận mở tài khoản của Aeon Group'
       )
       return
     }
@@ -199,7 +199,7 @@ function Register(props: any) {
               style={{ color: 'white' }}
               onChange={e => setReading(e.target.checked)}
             >
-              Tôi đã đọc và đồng ý với thoả thuận mở tài khoản của Amazon
+              Tôi đã đọc và đồng ý với thoả thuận mở tài khoản của Aeon Group
             </Checkbox>
           </Form.Item>
           <Form.Item
