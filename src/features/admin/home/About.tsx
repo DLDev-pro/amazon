@@ -14,9 +14,8 @@ import {
   YoutubeOutlined,
 } from '@ant-design/icons'
 import R from 'assets'
+import Map from './components/Map'
 import * as Styled from './styled'
-import images from 'assets/images'
-import R from 'assets'
 
 const { Header, Footer, Content } = Layout
 const contentStyle: React.CSSProperties = {
