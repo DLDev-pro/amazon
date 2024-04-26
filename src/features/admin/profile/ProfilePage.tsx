@@ -4,6 +4,7 @@ import { Button, Col, Divider, Image, Layout, message, Row } from 'antd'
 import R from 'assets'
 import { ADMIN_ROUTER_PATH, SESSION_KEY } from 'common/config'
 import { getUserInfoAction } from 'features/auth/AuthSlice'
+import { t } from 'i18next'
 import Cookie from 'js-cookie'
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -183,7 +184,8 @@ const ProfilePage: React.FC = () => {
                     textAlign: 'center',
                   }}
                 >
-                  Mã mời: {userInfo?.reference_code || userInfo?.phone}
+                  {t('profile_page.invitation_code')}:{' '}
+                  {userInfo?.reference_code || userInfo?.phone}
                 </b>
               </Row>
             </Row>
@@ -228,7 +230,7 @@ const ProfilePage: React.FC = () => {
                   window.open(CHAT_LINK)
                 }}
               >
-                Nạp tiền
+                {t('profile_page.deposit')}
               </Button>
             </Col>
             <Col
@@ -272,7 +274,7 @@ const ProfilePage: React.FC = () => {
                   }
                 }}
               >
-                Rút tiền
+                {t('profile_page.withdraw')}
               </Button>
             </Col>
           </Row>
@@ -280,7 +282,7 @@ const ProfilePage: React.FC = () => {
       </Row>
 
       <div style={{ backgroundColor: 'white' }}>
-        <HeadTitle title="Lịch sử đơn hàng" />
+        <HeadTitle title={t('profile_page.order_history')} />
         <hr />
         <Row
           gutter={16}
@@ -291,21 +293,21 @@ const ProfilePage: React.FC = () => {
           <Col span={12}>
             <OptionSelectHorizontal
               to={ADMIN_ROUTER_PATH.HISTORY}
-              title="Lịch sử săn đơn hàng"
+              title={t('profile_page.order_history')}
               icon={<img src={R.images.lichsudon} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
             <OptionSelectHorizontal
               to={ADMIN_ROUTER_PATH.ORDER}
-              title="Bắt đầu săn đơn hàng"
+              title={t('profile_page.order_begin')}
               icon={<img src={R.images.sanhang} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
             <OptionSelectHorizontal
               to={`${ADMIN_ROUTER_PATH.MY_GROUP}?tabs=level_1`}
-              title="Nhóm của tôi"
+              title={t('profile_page.my_group')}
               icon={<img src={R.images.nhomcuatoi} style={{ height: 24 }} />}
             />
           </Col>
@@ -313,7 +315,7 @@ const ProfilePage: React.FC = () => {
       </div>
 
       <div style={{ backgroundColor: 'white' }}>
-        <HeadTitle title={'Số dư tài khoản $' + userInfo?.balance} />
+        <HeadTitle title={t('profile_page.balance') + userInfo?.balance} />
         <hr />
 
         <Row
@@ -325,35 +327,35 @@ const ProfilePage: React.FC = () => {
           <Col span={12}>
             <OptionSelectVertical
               to={ADMIN_ROUTER_PATH.HISTORY_TRANSACTION}
-              title="Lịch sử nạp tiền"
+              title={t('profile_page.deposit_history')}
               icon={<img src={R.images.naptien} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
             <OptionSelectVertical
               to={ADMIN_ROUTER_PATH.HISTORY_TRANSACTION}
-              title="Lịch sử rút tiền"
+              title={t('profile_page.withdraw_history')}
               icon={<img src={R.images.ruttien} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
             <OptionSelectVertical
               to={ADMIN_ROUTER_PATH.HISTORY_TRANSACTION}
-              title="Chi tiết thu chi"
+              title={t('profile_page.pay_detail')}
               icon={<img src={R.images.thuchi} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
             <OptionSelectVertical
               to={ADMIN_ROUTER_PATH.DEPOSIT_PASS}
-              title="Mật khẩu vốn"
+              title={t('profile_page.origin_password')}
               icon={<img src={R.images.mkvon} style={{ height: 24 }} />}
             />
           </Col>
         </Row>
       </div>
       <div style={{ backgroundColor: 'white' }}>
-        <HeadTitle title="Thông tin cá nhân" />
+        <HeadTitle title={t('profile_page.profile')} />
         <hr />
 
         <Row
@@ -365,21 +367,21 @@ const ProfilePage: React.FC = () => {
           <Col span={12}>
             <OptionSelectVertical
               to={ADMIN_ROUTER_PATH.BANK_CARD}
-              title="Thẻ ngân hàng"
+              title={t('profile_page.bank_card')}
               icon={<img src={R.images.thenganhang} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
             <OptionSelectVertical
               to={ADMIN_ROUTER_PATH.MEMBER_RANK}
-              title="Cấp bậc hội viên"
+              title={t('profile_page.member_rank')}
               icon={<img src={R.images.hoivien} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
             <OptionSelectVertical
               to={ADMIN_ROUTER_PATH.DELIVERY_ADDRESS}
-              title="Địa chỉ nhận hàng"
+              title={t('profile_page.delivery_address')}
               icon={<img src={R.images.diachi} style={{ height: 24 }} />}
             />
           </Col>
@@ -412,14 +414,14 @@ const ProfilePage: React.FC = () => {
               >
                 <img src={R.images.tinnhan} style={{ height: 24 }} />
                 <div style={{ width: 5, marginTop: 5 }}></div>
-                Tin nhắn từ hệ thống
+                {t('profile_page.system_message')}
               </a>
             </div>
           </Col>
         </Row>
       </div>
       <div style={{ backgroundColor: 'white' }}>
-        <HeadTitle title="Liên hệ chăm sóc khác hàng" />
+        <HeadTitle title={t('profile_page.contact')} />
         <hr />
         <Row
           gutter={16}
@@ -430,7 +432,7 @@ const ProfilePage: React.FC = () => {
           <Col span={12}>
             <OptionSelectHorizontal
               to={ADMIN_ROUTER_PATH.SUPPORT}
-              title="Trung tâm chăm sóc khách hàng"
+              title={t('profile_page.central_take_care_cumstomer')}
               icon={<img src={R.images.dvcskh} style={{ height: 24 }} />}
             />
           </Col>
@@ -438,7 +440,7 @@ const ProfilePage: React.FC = () => {
           <Col span={12}>
             <OptionSelectHorizontal
               to={ADMIN_ROUTER_PATH.SUPPORT}
-              title="Ý kiến phản hồi"
+              title={t('profile_page.feedback')}
               icon={<img src={R.images.ykien} style={{ height: 24 }} />}
             />
           </Col>
@@ -464,7 +466,7 @@ const ProfilePage: React.FC = () => {
             fontWeight: 'bold',
           }}
         >
-          <span>Quốc gia/Khu vực</span>
+          <span>{t('profile_page.language')}</span>
           <p
             style={{
               display: 'flex',
@@ -501,7 +503,9 @@ const ProfilePage: React.FC = () => {
             fontWeight: 'bold',
           }}
         >
-          <Link to={ADMIN_ROUTER_PATH.CHANGE_PASS}>Mật khẩu đăng nhập</Link>
+          <Link to={ADMIN_ROUTER_PATH.CHANGE_PASS}>
+            {t('profile_page.password_login')}
+          </Link>
           <p
             onClick={() => {
               alert('Đăng xuất')
@@ -516,7 +520,7 @@ const ProfilePage: React.FC = () => {
               alignItems: 'center',
             }}
           >
-            Đăng xuất <IoIosArrowForward />
+            {t('profile_page.log_out')} <IoIosArrowForward />
           </p>
         </div>
       </div>

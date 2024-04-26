@@ -1,1 +1,40 @@
-{}
+{
+  "title": {
+    "shop": "Shop",
+    "account": "Account",
+    "customer": "Customer",
+    "order": "Order",
+    "dashboard": "Dashboard",
+    "report": "Report",
+    "news": "News",
+    "product": "Product",
+    "config": "Configuration",
+    "category": "Category"
+  },
+  "placeholder": {
+    "login_name": "Username",
+    "password": "Password"
+  },
+  "messager": {
+    "request_fail": "Request failed",
+    "connect_server_error": "Server connection error"
+  },
+  "navigation_bottom": {
+    "home": "Home",
+    "history": "History",
+    "order": "Get order",
+    "support": "Support",
+    "profile": "Profile"
+  },
+  "home_page": {
+    "welcome": "Welcome",
+    "welcome_desc": "Let Aeon Group kickstart your path to wealth",
+    "lucky_draw": "Lucky Draw",
+    "quick_update": "Quick Update",
+    "quick_deposit": "Quick Deposit",
+    "quick_withdraw": "Quick Withdraw",
+    "quests": "Quests",
+    "profit": "Commission",
+    "Đồ điện tử và công nghệ | Đồng hồ hàng hiệu | Thời trang nam nữ | Mẹ và Bé | Thế giới nước hoa | Phụ tùng, phụ kiện xe hơi | Dụng cụ thể thao, Du lịch": "Electronics and Technology | Luxury Watches | Men's and Women's Fashion | Mom and Baby | Perfume World | Car Parts, Accessories | Sports Equipment, Travel"
+  }
+}

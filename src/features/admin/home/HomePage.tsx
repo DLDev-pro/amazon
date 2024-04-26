@@ -10,6 +10,7 @@ import QuestHall from './components/QuestHall'
 import QuickAction from './components/QuickAction'
 import SlickBanner from './components/SlickBanner'
 import * as Styled from './styled'
+import { t } from 'i18next'
 import AboutPage from './About'
 
 const { Title, Paragraph, Text } = Typography
@@ -75,7 +76,7 @@ const HomePage: React.FC = () => {
       list_random.push({
         name: text,
         income:
-          'Hoa hồng thu nhập $' +
+          t('profit_reward') +
           formatPrice(Math.floor(Math.random() * 9999) + 99),
         date: moment().format('MM-DD'),
       })
@@ -84,12 +85,12 @@ const HomePage: React.FC = () => {
   }
 
   const randomIncome = () => {
-    var possible =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
+    var number_first = '789'
+    var possible = '0123456789'
     var text = ''
     text =
-      possible.charAt(Math.floor(Math.random() * possible.length)) +
+      0 +
+      number_first.charAt(Math.floor(Math.random() * number_first.length)) +
       possible.charAt(Math.floor(Math.random() * possible.length)) +
       '*****' +
       possible.charAt(Math.floor(Math.random() * possible.length)) +
@@ -253,7 +254,7 @@ const HomePage: React.FC = () => {
       <QuestHall levelList={data} currentLevelIndex={currentLevelIdx} />
       <CatalogAboutUs />
       <Styled.WrapUserIncomeList>
-        <strong>Động thái thu nhập hoa hồng người dùng</strong>
+        <strong>{t('home_page.user_reward_status')}</strong>
         {incomeList.map((item: any) => (
           <Styled.UserIncomeList key={item.name}>
             <span>
@@ -294,11 +295,9 @@ const HeaderContainer = () => {
               marginBottom: 0,
             }}
           >
-            Hello
+            {t('home_page.welcome')}
           </Title>
-          <Paragraph>
-            Hãy để Amonzon Group khởi đầu con đường làm giàu của bạn
-          </Paragraph>
+          <Paragraph>{t('home_page.welcome_desc')}</Paragraph>
         </Typography>
       </Col>
       <Col

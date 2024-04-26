@@ -15,6 +15,7 @@ import {
   requestLevelList,
 } from '../home/Api/LevelApi'
 import * as Styled from './styled'
+import { t } from 'i18next'
 
 const styleIcon = { fontSize: '35px', color: 'white' }
 
@@ -242,7 +243,8 @@ const ProfilePage: React.FC = () => {
         >
           <div style={{ marginTop: '1rem' }}>{data?.category?.join(' | ')}</div>
           <div style={{ fontWeight: 600 }}>
-            Hoa hồng {data.commission_percent}%
+            {t('home_page.profit')}
+            {data.commission_percent}%
           </div>
 
           <Styled.ImageBlock>
@@ -268,7 +270,7 @@ const ProfilePage: React.FC = () => {
                 fontWeight: 700,
               }}
             >
-              Khớp thành công
+              {t('order_page.matching_orders')}
             </span>
             <span
               style={{
@@ -336,25 +338,25 @@ const ProfilePage: React.FC = () => {
           margin: '0.5rem 0',
         }}
       >
-        Thành quả hôm nay
+        {t('order_page.analytic_detail')}
       </h1>
       {/* {renderModal()} */}
       <Styled.WhiteBox style={{ display: 'flex', textAlign: 'center' }}>
         <Row style={{ width: '100%' }}>
           <Styled.InfoBlock xs={12} md={12}>
-            <p>Số dư tài khoản</p>
+            <p>{t('order_page.balance')}</p>
             <span>${formatPrice(analyticDetail?.balance)}</span>
           </Styled.InfoBlock>
           <Styled.InfoBlock xs={12} md={12}>
-            <p>Số đơn hoàn thành</p>
+            <p>{t('order_page.num_completed_orders')}</p>
             <span>{analyticDetail?.count_order_today}/80</span>
           </Styled.InfoBlock>
           <Styled.InfoBlock xs={12} md={12}>
-            <p>Hoa hồng hôm nay</p>
+            <p>{t('order_page.reward_today')}</p>
             <span>${analyticDetail?.total_commission_today.toFixed(2)}</span>
           </Styled.InfoBlock>
           <Styled.InfoBlock xs={12} md={12}>
-            <p>Số tiền đóng băng </p>
+            <p>{t('order_page.frozen_balance')} </p>
             <span>${formatPrice(userInfo?.frozen_balance)}</span>
           </Styled.InfoBlock>
         </Row>
@@ -372,12 +374,9 @@ const ProfilePage: React.FC = () => {
             margin: '0 auto',
           }}
         >
-          Giải mã
+          {t('order_page.explain')}
         </Styled.Title>
-        <Styled.Note>
-          Lưu ý: Nâng cấp gian hàng để nhận được nhiều đơn và có tỷ lệ hoa hồng
-          cao hơn !
-        </Styled.Note>
+        <Styled.Note>{t('order_page.explain_desc')}</Styled.Note>
       </Styled.WhiteBox>
       <Styled.WhiteBox style={{ marginTop: '1rem' }}>
         <Styled.Title
@@ -394,7 +393,7 @@ const ProfilePage: React.FC = () => {
             background: `linear-gradient(209deg, #ffcc2c, #ff9a2c)`,
           }}
         >
-          Hướng dẫn
+          {t('order_page.instructions')}
         </Styled.Title>
         <Styled.Note
           style={{
@@ -402,14 +401,8 @@ const ProfilePage: React.FC = () => {
             lineHeight: '24px',
           }}
         >
-          <div>
-            1：Cấp bậc hội viên của bạn có thể được so khớp hằng ngày 80 đơn
-            nhiệm vụ 80
-          </div>
-          <div>
-            2：Bạn cần hoàn thành số đơn hàng nằm trong gói thành viên đã đăng
-            ký để đủ điều kiện thanh khoản trong phút。120
-          </div>
+          <div>{t('order_page.instructions_1')}</div>
+          <div>{t('order_page.instructions_2')}</div>
         </Styled.Note>
       </Styled.WhiteBox>
     </div>

@@ -8,34 +8,35 @@ import history from 'utils/history'
 import './style.css'
 import * as Styled from './styled'
 import { CHAT_LINK } from 'utils/constants'
+import { t } from 'i18next'
 
 const FooterContainer: React.FC = () => {
   const MenuFooter = [
     {
       pathname: ADMIN_ROUTER_PATH.HOME,
-      title: 'Trang chủ',
+      title: t('navigation_bottom.home'),
       icon: <AiOutlineHome style={styleIcon} />,
     },
 
     {
       pathname: ADMIN_ROUTER_PATH.HISTORY,
-      title: 'Lịch sử',
+      title: t('navigation_bottom.history'),
       icon: <BsBoxSeam style={styleIcon} />,
     },
     {
       pathname: ADMIN_ROUTER_PATH.ORDER,
-      title: 'Lấy đơn',
+      title: t('navigation_bottom.order'),
       icon: <GiClick style={styleIcon} />,
       special: true,
     },
     {
       pathname: ADMIN_ROUTER_PATH.SUPPORT,
-      title: 'Hỗ trợ',
+      title: t('navigation_bottom.support'),
       icon: <MdSupportAgent style={styleIcon} />,
     },
     {
       pathname: ADMIN_ROUTER_PATH.PROFILE,
-      title: 'Cá nhân',
+      title: t('navigation_bottom.profile'),
       icon: <BsPerson style={styleIcon} />,
     },
   ]

@@ -7,6 +7,7 @@ import history from 'utils/history'
 import { formatPrice } from 'utils/ruleForm'
 import { requestHistory } from './api/ApiHistory'
 import * as Styled from './styled'
+import { t } from 'i18next'
 import R from 'assets'
 
 const HistoryPage: React.FC = () => {
@@ -66,13 +67,13 @@ const HistoryPage: React.FC = () => {
   const getColorForTagStatus = (status: string) => {
     switch (status) {
       case 'Processi-ng':
-        return { color: 'var(--orange-1)', text: 'Chờ xử lý' }
+        return { color: 'var(--orange-1)', text: t('history_page.pending') }
       case 'Success':
-        return { color: 'var(--green-1)', text: 'Đã hoàn thành' }
+        return { color: 'var(--green-1)', text: t('history_page.completed') }
       case 'Frozen':
-        return { color: 'var(--blue-1)', text: 'Đóng băng' }
+        return { color: 'var(--blue-1)', text: t('history_page.frozen') }
       default:
-        return { color: 'var(--orange-1)', text: 'Chờ xử lý' }
+        return { color: 'var(--orange-1)', text: t('history_page.pending') }
     }
   }
 
@@ -89,7 +90,7 @@ const HistoryPage: React.FC = () => {
               })
             }}
           >
-            Tất cả
+            {t('history_page.all')}
           </Col>
           <Col
             span={6}
@@ -103,7 +104,7 @@ const HistoryPage: React.FC = () => {
               })
             }}
           >
-            Kiểm duyệt
+            {t('history_page.processing')}
           </Col>
 
           <Col
@@ -118,7 +119,7 @@ const HistoryPage: React.FC = () => {
               })
             }}
           >
-            Thành công
+            {t('history_page.success')}
           </Col>
           <Col
             span={6}
@@ -132,7 +133,7 @@ const HistoryPage: React.FC = () => {
               })
             }}
           >
-            Thất bại
+            {t('history_page.fail')}
           </Col>
         </Styled.HeaderTabs>
       </Styled.ContainerTabs>

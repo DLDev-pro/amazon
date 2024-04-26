@@ -1,22 +1,107 @@
 {
-    "title":{
-        "shop":"Cửa hàng",
-        "account" :"Tài khoản",
-        "customer":"Khách hàng",
-        "order":"Đơn hàng",
-        "dashboard":"Tổng quan",
-        "report":"Báo cáo",
-        "news":"Tin tức",
-        "product":"Sản phẩm",
-        "config":"Cấu hình",
-        "category":"Danh mục"
-    },
-    "placeholder":{
-        "login_name":"Tên đăng nhập",
-        "password":"Mật khẩu"
-    },
-    "messager":{
-        "request_fail": "Yêu cầu thất bại",
-        "connect_server_error":"Lỗi kết nối đến server"
-    }
+  "title": {
+    "shop": "Cửa hàng",
+    "account": "Tài khoản",
+    "customer": "Khách hàng",
+    "order": "Đơn hàng",
+    "dashboard": "Tổng quan",
+    "report": "Báo cáo",
+    "news": "Tin tức",
+    "product": "Sản phẩm",
+    "config": "Cấu hình",
+    "category": "Danh mục"
+  },
+  "placeholder": {
+    "login_name": "Tên đăng nhập",
+    "password": "Mật khẩu"
+  },
+  "messager": {
+    "request_fail": "Yêu cầu thất bại",
+    "connect_server_error": "Lỗi kết nối đến server"
+  },
+  "navigation_bottom": {
+    "home": "Trang chủ",
+    "history": "Lịch sử",
+    "order": "Lấy đơn",
+    "support": "Hỗ trợ",
+    "profile": "Cá nhân"
+  },
+  "home_page": {
+    "welcome": "Xin chào",
+    "welcome_desc": " Hãy để Aeon Group khởi đầu con đường làm giàu của bạn",
+    "lucky_draw": "Vòng quay may mắn",
+    "quick_update": "Nâng đặt nhanh",
+    "quick_deposit": "Nạp nhanh",
+    "quick_withdraw": "Rút nhanh",
+    "quests": "Sảnh nhiệm vụ",
+    "profit": "Hoa hồng",
+    "user_reward_status": "Động thái thu nhập hoa hồng người dùng"
+  },
+  "login_page": {
+    "phone": "Số điện thoại",
+    "password": "Mật khẩu",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "message_not_empty": "Không được để trống",
+    "password_too_short": "Mật khẩu tối thiểu là 6 kí tự"
+  },
+  "history_page": {
+    "all": "Tất cả",
+    "processing": "Kiểm duyệt",
+    "success": "Thành công",
+    "fail": "Thất bại",
+    "price": "Giá tiền",
+    "commission": "Hoa hồng",
+    "pending": "Chờ xử lý",
+    "completed": "Đã hoàn thành",
+    "frozen": "Đóng băng"
+  },
+  "order_page": {
+    "matching_orders": "Khớp thành công",
+    "analytic_detail": "Thành quả hôm nay",
+    "balance": "Số dư tài khoản",
+    "num_completed_orders": "Số đơn đã hoàn thành",
+    "frozen_balance": "Số dư đóng băng",
+    "reward_today": "Hoa hồng hôm nay",
+    "explain": "Giải mã",
+    "explain_desc": "Lưu ý: Nâng cấp gian hàng để nhận được nhiều đơn và có tỷ lệ hoa hồng cao hơn !",
+    "instructions": "Hướng dẫn",
+    "instructions_1": "1：Cấp bậc hội viên của bạn có thể được so khớp hằng ngày 80 đơn nhiệm vụ 80",
+    "instructions_2": "2：Bạn cần hoàn thành số đơn hàng nằm trong gói thành viên đã đăngký để đủ điều kiện thanh khoản trong phút。120"
+  },
+  "bill": {
+    "unit_of_order": "Đơn vị trật tự",
+    "created_at": "Thời gian nhận",
+    "order_id": "Mã đơn hàng",
+    "total_order_price": "Tổng số tiền đơn hàng",
+    "commission": "Hoa hồng",
+    "return_blance": "Số tiền hoàn trả",
+    "send_order": "Gửi đơn hàng"
+  },
+  "profile_page": {
+    "invitation_code": "Mã mời",
+    "deposit": "Nạp tiền",
+    "withdraw": "Rút tiền",
+    "order_history": "Lịch sử đơn hàng",
+    "order_begin": "Bắt đầu săn đơn",
+    "my_group": "Nhóm của tôi",
+    "balance": "Số dư tài khoản",
+    "withdraw_history": "Lịch sử rút tiền",
+    "deposit_history": "Lịch sử nạp tiền",
+    "pay_detail": "Chi tiết thu chi",
+    "origin_password": "Mật bạn vốn",
+    "profile": "Thông tin cá nhân",
+    "bank_card": "Thẻ ngân hàng",
+    "member_rank": "Cấp bật hội viên",
+    "delivery_address": "Địa chỉ nhận hàng",
+    "system_message": "Tin nhắn hệ thống",
+    "contact": "Liện hệ chăm sóc khách hàng",
+    "central_take_care_cumstomer": "Trung tâm chăm sóc khách hàng",
+    "feedback": "Ý kiến phản hồi",
+    "language": "Quốc gia/Khu vục",
+    "password_login": "Mật khẩu đăng nhập",
+    "log_out": "Đăng xuất"
+  },
+  "wait_for_upgrade": "Chờ nâng cấp",
+  "profit_reward": "Hoa hồng nhận được $"
 }

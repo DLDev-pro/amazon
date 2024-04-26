@@ -17,6 +17,7 @@ import { useHistory } from 'react-router-dom'
 import { requestLogin } from './AuthApi'
 import { getUserInfoAction } from './AuthSlice'
 import './authStyle.css'
+import { t } from 'i18next'
 
 function Login(props: any) {
   const [form] = Form.useForm()
@@ -72,7 +73,7 @@ function Login(props: any) {
           <Form.Item
             name="phone"
             rules={[
-              { required: true, message: 'Không được bỏ trống' },
+              { required: true, message: t('login_page.message_not_empty') },
               // {
               //   pattern: REG_PHONE,
               //   message: 'Số điện thoại không hợp lệ',
@@ -95,14 +96,14 @@ function Login(props: any) {
                   }}
                 />
               }
-              placeholder={'Số điện thoại'}
+              placeholder={t('login_page.phone')}
             />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[
-              { required: true, message: 'Không được bỏ trống' },
-              { min: 6, message: 'Nhập ít nhất 6 ký tự' },
+              { required: true, message: t('login_page.message_not_empty') },
+              { min: 6, message: t('login_page.password_too_short') },
             ]}
           >
             <Input.Password
@@ -147,7 +148,7 @@ function Login(props: any) {
                 color: '#f2d8be',
               }}
             >
-              Đăng nhập
+              {t('login_page.login')}
             </Button>
           </Form.Item>
         </Form>
@@ -167,7 +168,9 @@ function Login(props: any) {
             color: '#f2d8be',
           }}
         >
-          <a onClick={() => history.push('/register')}>Đăng ký</a>
+          <a onClick={() => history.push('/register')}>
+            {t('login_page.register')}
+          </a>
         </Button>
       </div>
       {/* {isLoading && <LoadingProgress />} */}

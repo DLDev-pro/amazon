@@ -1,6 +1,7 @@
 import { Col, Row } from 'antd'
 import React from 'react'
 import QuestComp from './QuestComp'
+import { t } from 'i18next'
 
 type Props = {
   levelList: any
@@ -15,12 +16,12 @@ const QuestHall: React.FC<Props> = ({ levelList, currentLevelIndex }) => {
           fontWeight: 700,
         }}
       >
-        Sảnh nhiệm vụ
+        {t('home_page.quests')}
       </span>
       <Row style={{ marginTop: '1rem' }}>
         {levelList?.map((item: any, index: number) => {
           const isValid = index <= currentLevelIndex
-          const isUpgradeable = index == currentLevelIndex + 1
+          const isUpgradeable = index === currentLevelIndex + 1
           const isInvalid = index > currentLevelIndex && !isUpgradeable
 
           return (
