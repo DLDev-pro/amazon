@@ -2,11 +2,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button, Col, Divider, Image, Layout, message, Row } from 'antd'
 import R from 'assets'
-import { ADMIN_ROUTER_PATH, SESSION_KEY } from 'common/config'
+import { ADMIN_ROUTER_PATH } from 'common/config'
 import { getUserInfoAction } from 'features/auth/AuthSlice'
 import { t } from 'i18next'
-import Cookie from 'js-cookie'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { AiFillBank } from 'react-icons/ai'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -116,9 +116,11 @@ const ProfilePage: React.FC = () => {
       const resData = (await getListLevel()).data
       const ownLevel = userInfo?.level
 
-      const currentLevelData = resData.find((item: any) => item.key == ownLevel)
+      const currentLevelData = resData.find(
+        (item: any) => item.key === ownLevel
+      )
       let currentLvIdx =
-        resData.indexOf(currentLevelData) == -1
+        resData.indexOf(currentLevelData) === -1
           ? 0
           : resData.indexOf(currentLevelData)
 
@@ -131,7 +133,45 @@ const ProfilePage: React.FC = () => {
     getData()
   }, [])
 
-  // console.log('userInfo', listRank[currentLevelIdx]?.price)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [backgroundImage, setBackgroundImage] = useState<string>('')
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const front = event.target.files?.[0]
+    const back = event.target.files?.[1]
+    console.log(front, back)
+
+    if (front) {
+      const readerFront = new FileReader()
+      readerFront.onloadend = () => {
+        const base64ImageStringFront = `url(${readerFront.result})`
+        setBackgroundImage(base64ImageStringFront)
+        // Save to localStorage
+        localStorage.setItem('bankFront', readerFront.result as string)
+      }
+      readerFront.readAsDataURL(front)
+    }
+
+    if (back) {
+      const readerBack = new FileReader()
+      readerBack.onloadend = () => {
+        // Save to localStorage
+        localStorage.setItem('bankBack', `${readerBack.result}`)
+      }
+      readerBack.readAsDataURL(back)
+    }
+  }
+
+  useEffect(() => {
+    const profileImage = localStorage.getItem('bankFront')
+    if (profileImage) {
+      setBackgroundImage(`url(${profileImage})`)
+    }
+  }, [])
+
+  const defaultImage = `url(
+    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAAaCAYAAABb9hlrAAAAWElEQVRoge3RQQHAIBDAsGMasYB0dAwbfSQWss6+/5D1qWkTFCcoTlCcoDhBcYLiBMUJihMUJyhOUJygOEFxguIExQmKExQnKE5QnKA4QXGC4gTFCSqbmQcjtQLReG26xgAAAABJRU5ErkJggg==
+  )`
   return (
     <Content
       style={{
@@ -141,14 +181,27 @@ const ProfilePage: React.FC = () => {
       <Row
         justify="center"
         align="middle"
+        id="profile-page-image"
         style={{
-          backgroundImage: ` url(
-            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAAaCAYAAABb9hlrAAAAWElEQVRoge3RQQHAIBDAsGMasYB0dAwbfSQWss6+/5D1qWkTFCcoTlCcoDhBcYLiBMUJihMUJyhOUJygOEFxguIExQmKExQnKE5QnKA4QXGC4gTFCSqbmQcjtQLReG26xgAAAABJRU5ErkJggg==
-          )`,
+          backgroundImage: backgroundImage || defaultImage,
           borderBottomRightRadius: 10,
           borderBottomLeftRadius: 10,
+          height: 'auto',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          position: 'relative',
         }}
       >
+        <div
+          style={{
+            position: 'absolute',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            width: '100%',
+            height: '100%',
+            borderBottomRightRadius: 10,
+            borderBottomLeftRadius: 10,
+          }}
+        />
         <Col span="4">
           <Row align="middle">
             <Col>
@@ -162,7 +215,12 @@ const ProfilePage: React.FC = () => {
           </Row>
         </Col>
         <Col span="9">
-          <Col style={{ marginLeft: 10 }}>
+          <Col
+            style={{
+              marginLeft: 10,
+              color: backgroundImage ? 'white' : 'black',
+            }}
+          >
             <Row
               style={{
                 height: '100%',
@@ -205,6 +263,40 @@ const ProfilePage: React.FC = () => {
               }
               alt=""
             />
+          </Row>
+          <Row align="middle">
+            <Col
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: backgroundImage ? 'white' : 'black',
+              }}
+              onClick={() => {
+                // Trigger a click event on the file input when the Col is clicked
+                fileInputRef.current?.click()
+              }}
+              onChange={handleFileChange}
+            >
+              <AiFillBank
+                style={{
+                  fontSize: 20,
+                }}
+              />
+              <input
+                type="file"
+                ref={fileInputRef}
+                name=""
+                id=""
+                hidden
+                accept="image/*"
+                multiple={true}
+                max={2}
+              />
+              <small>
+                <b>Cập nhật NH</b>
+              </small>
+            </Col>
           </Row>
         </Col>
         <Col span="5">
@@ -253,7 +345,7 @@ const ProfilePage: React.FC = () => {
                 onClick={() => {
                   dispatch(getUserInfoAction())
 
-                  if (userInfo?.balance == 0) {
+                  if (userInfo?.balance === 0) {
                     Swal.fire({
                       title: 'Thông báo',
                       text: 'Số dư tài khoản không đủ để thực hiện thao tác này. Bạn có muốn nạp tiền?',
