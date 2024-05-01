@@ -12,17 +12,17 @@
     "category": "Category"
   },
   "placeholder": {
-    "login_name": "Username",
+    "login_name": "Login Name",
     "password": "Password"
   },
   "messager": {
-    "request_fail": "Request failed",
-    "connect_server_error": "Server connection error"
+    "request_fail": "Request Fail",
+    "connect_server_error": "Server Connection Error"
   },
   "navigation_bottom": {
     "home": "Home",
     "history": "History",
-    "order": "Get order",
+    "order": "Get Order",
     "support": "Support",
     "profile": "Profile"
   },
@@ -33,8 +33,75 @@
     "quick_update": "Quick Update",
     "quick_deposit": "Quick Deposit",
     "quick_withdraw": "Quick Withdraw",
-    "quests": "Quests",
+    "quests": "Quests Hall",
     "profit": "Commission",
-    "Đồ điện tử và công nghệ | Đồng hồ hàng hiệu | Thời trang nam nữ | Mẹ và Bé | Thế giới nước hoa | Phụ tùng, phụ kiện xe hơi | Dụng cụ thể thao, Du lịch": "Electronics and Technology | Luxury Watches | Men's and Women's Fashion | Mom and Baby | Perfume World | Car Parts, Accessories | Sports Equipment, Travel"
-  }
+    "user_reward_status": "User Commission Reward Status"
+  },
+  "login_page": {
+    "phone": "Phone",
+    "password": "Password",
+    "login": "Login",
+    "register": "Register",
+    "message_not_empty": "Field cannot be empty",
+    "password_too_short": "Minimum password length is 6 characters"
+  },
+  "history_page": {
+    "all": "All",
+    "processing": "Processing",
+    "success": "Success",
+    "fail": "Fail",
+    "price": "Price",
+    "commission": "Commission",
+    "pending": "Pending",
+    "completed": "Completed",
+    "frozen": "Frozen"
+  },
+  "order_page": {
+    "matching_orders": "Matching Orders",
+    "analytic_detail": "Today's Achievement",
+    "balance": "Account Balance",
+    "num_completed_orders": "Number of Completed Orders",
+    "frozen_balance": "Frozen Balance",
+    "reward_today": "Commission Today",
+    "explain": "Explain",
+    "explain_desc": "Note: Upgrade your shop to receive more orders and higher commission rates!",
+    "instructions": "Instructions",
+    "instructions_1": "1: Your membership level can be matched with 80 tasks per day",
+    "instructions_2": "2: You need to complete the number of orders in the registered membership package to meet liquidity requirements within minutes. 120"
+  },
+  "bill": {
+    "unit_of_order": "Unit of Order",
+    "created_at": "Received Time",
+    "order_id": "Order ID",
+    "total_order_price": "Total Order Price",
+    "commission": "Commission",
+    "return_blance": "Return Balance",
+    "send_order": "Send Order"
+  },
+  "profile_page": {
+    "invitation_code": "Invitation Code",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "order_history": "Order History",
+    "order_begin": "Start Order",
+    "my_group": "My Group",
+    "balance": "Account Balance",
+    "withdraw_history": "Withdraw History",
+    "deposit_history": "Deposit History",
+    "pay_detail": "Payment Details",
+    "origin_password": "Original Password",
+    "profile": "Profile",
+    "bank_card": "Bank Card",
+    "member_rank": "Member Rank",
+    "delivery_address": "Delivery Address",
+    "system_message": "System Messages",
+    "contact": "Customer Support Contact",
+    "central_take_care_cumstomer": "Central Customer Care Center",
+    "feedback": "Feedback",
+    "language": "Country/Region",
+    "password_login": "Password Login",
+    "log_out": "Log Out"
+  },
+  "wait_for_upgrade": "Wait for Upgrade",
+  "profit_reward": "Commission Received $"
 }

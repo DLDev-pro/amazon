@@ -1,0 +1,107 @@
+{
+  "title": {
+    "shop": "商店",
+    "account": "账户",
+    "customer": "客户",
+    "order": "订单",
+    "dashboard": "仪表板",
+    "report": "报告",
+    "news": "新闻",
+    "product": "产品",
+    "config": "配置",
+    "category": "类别"
+  },
+  "placeholder": {
+    "login_name": "登录名",
+    "password": "密码"
+  },
+  "messager": {
+    "request_fail": "请求失败",
+    "connect_server_error": "连接服务器出错"
+  },
+  "navigation_bottom": {
+    "home": "主页",
+    "history": "历史",
+    "order": "接单",
+    "support": "支持",
+    "profile": "个人资料"
+  },
+  "home_page": {
+    "welcome": "欢迎",
+    "welcome_desc": "让爱光集团开启您的财富之路",
+    "lucky_draw": "幸运抽奖",
+    "quick_update": "快速更新",
+    "quick_deposit": "快速存款",
+    "quick_withdraw": "快速提款",
+    "quests": "任务大厅",
+    "profit": "佣金",
+    "user_reward_status": "用户佣金奖励状态"
+  },
+  "login_page": {
+    "phone": "电话",
+    "password": "密码",
+    "login": "登录",
+    "register": "注册",
+    "message_not_empty": "字段不能为空",
+    "password_too_short": "密码最小长度为6个字符"
+  },
+  "history_page": {
+    "all": "全部",
+    "processing": "处理中",
+    "success": "成功",
+    "fail": "失败",
+    "price": "价格",
+    "commission": "佣金",
+    "pending": "待处理",
+    "completed": "已完成",
+    "frozen": "冻结"
+  },
+  "order_page": {
+    "matching_orders": "匹配订单",
+    "analytic_detail": "今日成果",
+    "balance": "账户余额",
+    "num_completed_orders": "已完成订单数",
+    "frozen_balance": "冻结余额",
+    "reward_today": "今日佣金",
+    "explain": "解释",
+    "explain_desc": "注意：升级您的店铺以获取更多订单和更高的佣金率！",
+    "instructions": "说明",
+    "instructions_1": "1：您的会员级别可以每天匹配80个任务",
+    "instructions_2": "2：您需要完成注册会员套餐中的订单数量，以在几分钟内满足流动性要求。120"
+  },
+  "bill": {
+    "unit_of_order": "订单单位",
+    "created_at": "接收时间",
+    "order_id": "订单号",
+    "total_order_price": "订单总金额",
+    "commission": "佣金",
+    "return_blance": "退款余额",
+    "send_order": "发送订单"
+  },
+  "profile_page": {
+    "invitation_code": "邀请码",
+    "deposit": "存款",
+    "withdraw": "提款",
+    "order_history": "订单历史",
+    "order_begin": "开始接单",
+    "my_group": "我的团队",
+    "balance": "账户余额",
+    "withdraw_history": "提款历史",
+    "deposit_history": "存款历史",
+    "pay_detail": "支付详情",
+    "origin_password": "原始密码",
+    "profile": "个人资料",
+    "bank_card": "银行卡",
+    "member_rank": "会员等级",
+    "delivery_address": "送货地址",
+    "system_message": "系统消息",
+    "contact": "客服联系",
+    "central_take_care_cumstomer": "中央客户服务中心",
+    "feedback": "反馈",
+    "language": "国家/地区",
+    "password_login": "密码登录",
+    "log_out": "退出登录"
+  },
+  "wait_for_upgrade": "等待升级",
+  "profit_reward": "获得佣金 $"
+}

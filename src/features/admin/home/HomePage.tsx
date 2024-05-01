@@ -97,7 +97,7 @@ const HomePage: React.FC = () => {
       possible.charAt(Math.floor(Math.random() * possible.length))
     return text
   }
-  const [openPopup, setOpenPopup] = useState<boolean>(false)
+  const [openPopup, setOpenPopup] = useState<boolean>(true)
 
   const PopupModal = () => {
     return (
@@ -144,6 +144,7 @@ const HomePage: React.FC = () => {
               alignItems: 'center',
               fontWeight: 'bold',
               fontSize: '1.5rem',
+              zIndex: 999,
             }}
             onClick={() => setOpenPopup(false)}
           >

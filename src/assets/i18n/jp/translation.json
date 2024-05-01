@@ -1,0 +1,107 @@
+{
+  "title": {
+    "shop": "ショップ",
+    "account": "アカウント",
+    "customer": "顧客",
+    "order": "注文",
+    "dashboard": "ダッシュボード",
+    "report": "レポート",
+    "news": "ニュース",
+    "product": "製品",
+    "config": "設定",
+    "category": "カテゴリー"
+  },
+  "placeholder": {
+    "login_name": "ログイン名",
+    "password": "パスワード"
+  },
+  "messager": {
+    "request_fail": "リクエスト失敗",
+    "connect_server_error": "サーバー接続エラー"
+  },
+  "navigation_bottom": {
+    "home": "ホーム",
+    "history": "履歴",
+    "order": "注文取得",
+    "support": "サポート",
+    "profile": "プロフィール"
+  },
+  "home_page": {
+    "welcome": "ようこそ",
+    "welcome_desc": "Aeon Groupがあなたの財富の道をスタートさせます",
+    "lucky_draw": "抽選",
+    "quick_update": "クイック更新",
+    "quick_deposit": "クイック入金",
+    "quick_withdraw": "クイック出金",
+    "quests": "クエストホール",
+    "profit": "コミッション",
+    "user_reward_status": "ユーザーコミッション報酬ステータス"
+  },
+  "login_page": {
+    "phone": "電話番号",
+    "password": "パスワード",
+    "login": "ログイン",
+    "register": "登録",
+    "message_not_empty": "フィールドを空にすることはできません",
+    "password_too_short": "パスワードの最小長は6文字です"
+  },
+  "history_page": {
+    "all": "すべて",
+    "processing": "処理中",
+    "success": "成功",
+    "fail": "失敗",
+    "price": "価格",
+    "commission": "手数料",
+    "pending": "保留中",
+    "completed": "完了",
+    "frozen": "凍結"
+  },
+  "order_page": {
+    "matching_orders": "マッチング注文",
+    "analytic_detail": "今日の成果",
+    "balance": "アカウント残高",
+    "num_completed_orders": "完了した注文数",
+    "frozen_balance": "凍結残高",
+    "reward_today": "本日のコミッション",
+    "explain": "説明",
+    "explain_desc": "注意：ショップをアップグレードして、より多くの注文と高い手数料率を受け取る！",
+    "instructions": "手順",
+    "instructions_1": "1：あなたの会員レベルは毎日80タスクにマッチングされる可能性があります",
+    "instructions_2": "2：登録した会員パッケージ内の注文数を完了して、数分以内に流動性要件を満たす必要があります。 120"
+  },
+  "bill": {
+    "unit_of_order": "注文単位",
+    "created_at": "受信時間",
+    "order_id": "注文ID",
+    "total_order_price": "注文合計金額",
+    "commission": "手数料",
+    "return_blance": "返金残高",
+    "send_order": "注文を送信"
+  },
+  "profile_page": {
+    "invitation_code": "招待コード",
+    "deposit": "入金",
+    "withdraw": "出金",
+    "order_history": "注文履歴",
+    "order_begin": "注文開始",
+    "my_group": "マイグループ",
+    "balance": "アカウント残高",
+    "withdraw_history": "出金履歴",
+    "deposit_history": "入金履歴",
+    "pay_detail": "支払い詳細",
+    "origin_password": "元のパスワード",
+    "profile": "プロフィール",
+    "bank_card": "銀行カード",
+    "member_rank": "会員ランク",
+    "delivery_address": "配送先住所",
+    "system_message": "システムメッセージ",
+    "contact": "カスタマーサポート連絡先",
+    "central_take_care_cumstomer": "中央顧客ケアセンター",
+    "feedback": "フィードバック",
+    "language": "国/地域",
+    "password_login": "パスワードログイン",
+    "log_out": "ログアウト"
+  },
+  "wait_for_upgrade": "アップグレードを待つ",
+  "profit_reward": "受け取った手数料 $"
+}

@@ -4,6 +4,8 @@ import XHR from 'i18next-xhr-backend'
 
 import translationEn from './en/translation.json'
 import translationVi from './vi/translation.json'
+import translationJp from './jp/translation.json'
+import translationCn from './cn/translation.json'
 
 i18n
   .use(LanguageDetector)
@@ -23,6 +25,12 @@ i18n
       },
       vi: {
         translations: translationVi,
+      },
+      jp: {
+        translations: translationJp,
+      },
+      cn: {
+        translations: translationCn,
       },
     },
     ns: ['translations'],

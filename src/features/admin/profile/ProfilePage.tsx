@@ -2,10 +2,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button, Col, Divider, Image, Layout, message, Row } from 'antd'
 import R from 'assets'
+import i18n from 'assets/i18n/translation'
 import { ADMIN_ROUTER_PATH, SESSION_KEY } from 'common/config'
 import { getUserInfoAction } from 'features/auth/AuthSlice'
 import { t } from 'i18next'
-import Cookie from 'js-cookie'
+
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
@@ -473,10 +474,18 @@ const ProfilePage: React.FC = () => {
               alignItems: 'center',
             }}
           >
-            <select name="countries" id="">
-              <option value="VN">Việt Nam</option>
-              <option value="JP">Nhật Bản</option>
-              <option value="EN">USA</option>
+            <select
+              name="countries"
+              // id=""
+              onChange={e => {
+                console.log(e.target.value)
+                i18n.changeLanguage(e.target.value)
+              }}
+            >
+              <option value="vi">Việt Nam</option>
+              <option value="jp">Nhật Bản</option>
+              <option value="en">USA</option>
+              <option value="cn">Trung Quốc</option>
             </select>
             <IoIosArrowForward />
           </p>
@@ -528,6 +537,3 @@ const ProfilePage: React.FC = () => {
   )
 }
 export default ProfilePage
-function getUserInfor(): any {
-  throw new Error('Function not implemented.')
-}
