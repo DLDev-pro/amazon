@@ -120,7 +120,6 @@ const HomePage: React.FC = () => {
             transform: 'translateX(-50% )',
             width: '95%',
             margin: '0 auto',
-
             height: '25rem',
             zIndex: 999,
             background: `url(${R.images.bgModalHome}) 2rem no-repeat, -webkit-gradient(linear, left top, left bottom, from(#ffcc2c), color-stop(60%, #fff))`,
@@ -145,8 +144,12 @@ const HomePage: React.FC = () => {
               fontWeight: 'bold',
               fontSize: '1.5rem',
               zIndex: 999,
+              padding: '2rem',
+              zIndex: 9999,
             }}
-            onClick={() => setOpenPopup(false)}
+            onClick={() => {
+              setOpenPopup(false)
+            }}
           >
             X
           </span>
@@ -192,13 +195,6 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div
-                //         background-color: #fff;
-                //         border-radius: 15px;
-                //         margin: 0 15px;
-                //         font-size: 1.5rem;
-                // line-height: 2rem;
-                // padding: var(--bs-modal-padding);
-                // position: relative;
                 style={{
                   backgroundColor: '#fff',
                   borderRadius: '15px',
@@ -207,6 +203,7 @@ const HomePage: React.FC = () => {
 
                   padding: '1rem',
                   position: 'relative',
+                  width: '100%',
                 }}
               >
                 <h1

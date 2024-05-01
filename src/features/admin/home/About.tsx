@@ -27,26 +27,18 @@ const contentStyle: React.CSSProperties = {
 const menu = (
   <Menu>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
-        1st menu item
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        Giới thiệu
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        2nd menu item
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        Tiện ích
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        3rd menu item
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        Chính sách bảo vệ dữ liệu cá nhân
       </a>
     </Menu.Item>
   </Menu>
