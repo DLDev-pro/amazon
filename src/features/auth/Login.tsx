@@ -175,7 +175,7 @@ function Login(props: any) {
         </Button>
       </div>
       {/* {isLoading && <LoadingProgress />} */}
-      <AboutPage />
+      {/* <AboutPage /> */}
     </div>
   )
 }
