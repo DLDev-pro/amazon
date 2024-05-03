@@ -18,6 +18,7 @@ import { requestLogin } from './AuthApi'
 import { getUserInfoAction } from './AuthSlice'
 import './authStyle.css'
 import { t } from 'i18next'
+import AboutPage from 'features/admin/home/About'
 
 function Login(props: any) {
   const [form] = Form.useForm()
@@ -174,6 +175,7 @@ function Login(props: any) {
         </Button>
       </div>
       {/* {isLoading && <LoadingProgress />} */}
+      <AboutPage />
     </div>
   )
 }

@@ -145,7 +145,7 @@ const HomePage: React.FC = () => {
               fontSize: '1.5rem',
               zIndex: 999,
               padding: '2rem',
-              zIndex: 9999,
+              // zIndex: 9999,
             }}
             onClick={() => {
               setOpenPopup(false)
