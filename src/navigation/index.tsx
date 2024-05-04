@@ -16,6 +16,7 @@ import { useAppSelector } from 'redux/store/store'
 import R from 'assets'
 
 import { Row, Col, Typography, Image } from 'antd'
+import AboutPage from 'features/admin/home/About'
 const { Title, Paragraph, Text } = Typography
 const { Header, Footer } = Layout
 

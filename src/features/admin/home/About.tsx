@@ -58,12 +58,8 @@ const AboutPage = () => {
   const carouselRef = useRef<any>(null)
 
   return (
-    <Layout
-      style={{
-        padding: '0 10px',
-      }}
-    >
-      <Header
+    <div style={{ padding: '20px 20px 0' }}>
+      {/* <Header
         style={{
           backgroundColor: 'white',
           padding: '0 20px',
@@ -105,7 +101,7 @@ const AboutPage = () => {
         </Dropdown>
         <p>Tin tức</p>
         <p>Liên hệ</p>
-      </Drawer>
+      </Drawer> */}
       <Content>
         <h1>
           <strong>Thông tin tổng quan</strong>
@@ -125,26 +121,6 @@ const AboutPage = () => {
           }}
         >
           <div style={{ margin: 'auto' }}>
-            {/* <Styled.ArrowBlock>
-              <LeftOutlined
-                className="icon-arror"
-                style={{ fontSize: '20px' }}
-                onClick={() => {
-                  if (carouselRef.current) {
-                    carouselRef.current.prev()
-                  }
-                }}
-              />
-              <RightOutlined
-                className="icon-arror"
-                style={{ fontSize: '20px' }}
-                onClick={() => {
-                  if (carouselRef.current) {
-                    carouselRef.current.next()
-                  }
-                }}
-              />
-            </Styled.ArrowBlock> */}
             <Carousel autoplay ref={carouselRef}>
               <div>
                 <img alt="banner" src={R.images.banner1} style={contentStyle} />
@@ -360,7 +336,7 @@ const AboutPage = () => {
           </Col>
         </Row>
       </Footer>
-    </Layout>
+    </div>
   )
 }
 

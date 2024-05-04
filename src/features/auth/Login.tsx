@@ -50,132 +50,124 @@ function Login(props: any) {
   }
 
   return (
-    <div className="login">
-      <img alt="" src={R.images.bg} className="login-bg" />
-      <div className="container-login">
-        {/* <img
-          className="login-logo"
-          width={150}
-          src={R.images.logo_web}
-          alt=""
-        /> */}
-        <Form
-          form={form}
-          layout={'vertical'}
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-            phone: null,
-            password: null,
-          }}
-          onFinish={onFinish}
-        >
-          <Form.Item
-            name="phone"
-            rules={[
-              { required: true, message: t('login_page.message_not_empty') },
-              // {
-              //   pattern: REG_PHONE,
-              //   message: 'Số điện thoại không hợp lệ',
-              // },
-            ]}
+    <div>
+      {' '}
+      <div className="login">
+        <img alt="" src={R.images.bg} className="login-bg" />
+        <div className="container-login">
+          <Form
+            form={form}
+            layout={'vertical'}
+            name="normal_login"
+            className="login-form"
+            initialValues={{
+              remember: true,
+              phone: null,
+              password: null,
+            }}
+            onFinish={onFinish}
           >
-            <Input
+            <Form.Item
+              name="phone"
+              rules={[
+                { required: true, message: t('login_page.message_not_empty') },
+              ]}
+            >
+              <Input
+                style={{
+                  borderRadius: '9999px',
+                  height: 46,
+                  fontSize: 16,
+                  fontWeight: 300,
+                  textAlign: 'center',
+                }}
+                prefix={
+                  <UserOutlined
+                    className="site-form-item-icon"
+                    style={{
+                      color: '#db5221',
+                    }}
+                  />
+                }
+                placeholder={t('login_page.phone')}
+              />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                { required: true, message: t('login_page.message_not_empty') },
+                { min: 6, message: t('login_page.password_too_short') },
+              ]}
+            >
+              <Input.Password
+                style={{
+                  borderRadius: '9999px',
+                  height: 46,
+                  fontSize: 16,
+                  fontWeight: 300,
+                }}
+                prefix={
+                  <LockOutlined
+                    className="site-form-item-icon"
+                    style={{
+                      color: '#db5221',
+                    }}
+                  />
+                }
+                type={showPassword ? 'text' : 'password'}
+                placeholder={R.strings().placeholder_password}
+                iconRender={visible =>
+                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                }
+              />
+            </Form.Item>
+
+            <Form.Item
               style={{
-                borderRadius: '9999px',
-                height: 46,
-                fontSize: 16,
-                fontWeight: 300,
                 textAlign: 'center',
               }}
-              prefix={
-                <UserOutlined
-                  className="site-form-item-icon"
-                  style={{
-                    color: '#db5221',
-                  }}
-                />
-              }
-              placeholder={t('login_page.phone')}
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              { required: true, message: t('login_page.message_not_empty') },
-              { min: 6, message: t('login_page.password_too_short') },
-            ]}
-          >
-            <Input.Password
-              style={{
-                borderRadius: '9999px',
-                height: 46,
-                fontSize: 16,
-                fontWeight: 300,
-              }}
-              prefix={
-                <LockOutlined
-                  className="site-form-item-icon"
-                  style={{
-                    color: '#db5221',
-                  }}
-                />
-              }
-              type={showPassword ? 'text' : 'password'}
-              placeholder={R.strings().placeholder_password}
-              iconRender={visible =>
-                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-              }
-            />
-          </Form.Item>
+            >
+              <Button
+                type="primary"
+                htmlType="submit"
+                className=" login-form-button"
+                style={{
+                  width: '100%',
+                  height: 40,
+                  fontWeight: 700,
+                  borderRadius: 7,
+                  backgroundColor: '#2f3848',
+                  borderColor: '#2f3848',
+                  color: '#f2d8be',
+                }}
+              >
+                {t('login_page.login')}
+              </Button>
+            </Form.Item>
+          </Form>
 
-          <Form.Item
+          <Button
+            type="primary"
+            htmlType="submit"
+            className=" login-form-button"
             style={{
-              textAlign: 'center',
+              marginTop: 10,
+              width: '100%',
+              height: 40,
+              fontWeight: 700,
+              borderRadius: 7,
+              backgroundColor: '#2f3848',
+              borderColor: '#2f3848',
+              color: '#f2d8be',
             }}
           >
-            <Button
-              type="primary"
-              htmlType="submit"
-              className=" login-form-button"
-              style={{
-                width: '100%',
-                height: 40,
-                fontWeight: 700,
-                borderRadius: 7,
-                backgroundColor: '#2f3848',
-                borderColor: '#2f3848',
-                color: '#f2d8be',
-              }}
-            >
-              {t('login_page.login')}
-            </Button>
-          </Form.Item>
-        </Form>
-
-        <Button
-          type="primary"
-          htmlType="submit"
-          className=" login-form-button"
-          style={{
-            marginTop: 10,
-            width: '100%',
-            height: 40,
-            fontWeight: 700,
-            borderRadius: 7,
-            backgroundColor: '#2f3848',
-            borderColor: '#2f3848',
-            color: '#f2d8be',
-          }}
-        >
-          <a onClick={() => history.push('/register')}>
-            {t('login_page.register')}
-          </a>
-        </Button>
+            <a onClick={() => history.push('/register')}>
+              {t('login_page.register')}
+            </a>
+          </Button>
+        </div>
       </div>
-      {/* {isLoading && <LoadingProgress />} */}
-      {/* <AboutPage /> */}
+      <AboutPage />
     </div>
   )
 }
