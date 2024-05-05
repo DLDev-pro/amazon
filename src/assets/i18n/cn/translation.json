@@ -100,7 +100,8 @@
     "feedback": "反馈",
     "language": "国家/地区",
     "password_login": "密码登录",
-    "log_out": "退出登录"
+    "log_out": "退出登录",
+    "visa_detail": "Visa 信用卡"
   },
   "wait_for_upgrade": "等待升级",
   "profit_reward": "获得佣金 $"

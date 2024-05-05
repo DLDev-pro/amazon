@@ -100,7 +100,8 @@
     "feedback": "フィードバック",
     "language": "国/地域",
     "password_login": "パスワードログイン",
-    "log_out": "ログアウト"
+    "log_out": "ログアウト",
+    "visa_detail": "Visa 信用卡"
   },
   "wait_for_upgrade": "アップグレードを待つ",
   "profit_reward": "受け取った手数料 $"

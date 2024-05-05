@@ -91,7 +91,7 @@
     "pay_detail": "Chi tiết thu chi",
     "origin_password": "Mật bạn vốn",
     "profile": "Thông tin cá nhân",
-    "bank_card": "Thẻ ngân hàng",
+    "bank_card": "Thông tin ngân hàng",
     "member_rank": "Cấp bật hội viên",
     "delivery_address": "Địa chỉ nhận hàng",
     "system_message": "Tin nhắn hệ thống",
@@ -100,7 +100,8 @@
     "feedback": "Ý kiến phản hồi",
     "language": "Quốc gia/Khu vục",
     "password_login": "Mật khẩu đăng nhập",
-    "log_out": "Đăng xuất"
+    "log_out": "Đăng xuất",
+    "visa_detail": "Thông tin Visa"
   },
   "wait_for_upgrade": "Chờ nâng cấp",
   "profit_reward": "Hoa hồng nhận được $"

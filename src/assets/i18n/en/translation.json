@@ -100,7 +100,8 @@
     "feedback": "Feedback",
     "language": "Country/Region",
     "password_login": "Password Login",
-    "log_out": "Log Out"
+    "log_out": "Log Out",
+    "visa_detail": "Visa Card"
   },
   "wait_for_upgrade": "Wait for Upgrade",
   "profit_reward": "Commission Received $"

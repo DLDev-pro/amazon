@@ -75,10 +75,12 @@ const OptionSelectHorizontal = ({
   icon,
   title,
   to,
+  redirect,
 }: {
   icon: unknown
   title: string
   to: string
+  redirect?: boolean
 }) => {
   return (
     <div
@@ -97,6 +99,11 @@ const OptionSelectHorizontal = ({
           display: 'flex',
           textAlign: 'center',
           fontWeight: 'bold',
+        }}
+        onClick={() => {
+          if (redirect) {
+            window.open(CHAT_LINK, '_blank')
+          }
         }}
       >
         {icon}
@@ -396,6 +403,14 @@ const ProfilePage: React.FC = () => {
               to={ADMIN_ROUTER_PATH.ORDER}
               title={t('profile_page.order_begin')}
               icon={<img src={R.images.sanhang} style={{ height: 24 }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <OptionSelectHorizontal
+              to={'#'}
+              redirect={true}
+              title={t('profile_page.visa_detail')}
+              icon={<img src={R.images.nhomcuatoi} style={{ height: 24 }} />}
             />
           </Col>
           <Col span={12}>
