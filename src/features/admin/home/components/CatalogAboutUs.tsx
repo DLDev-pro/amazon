@@ -6,14 +6,17 @@ import history from 'utils/history'
 import * as Styled from '../styled'
 
 const CATALOG_LIST = [
-  R.images.vechungta,
-  R.images.mota,
-  R.images.taichinh,
-  R.images.vanhoadoanhnghiep,
-  R.images.dieukien,
-  R.images.mauthuthap,
-  R.images.phanchianhom,
-  R.images.chinhsachcanhan,
+  { banner: R.images.vechungta, url: ADMIN_ROUTER_PATH.ABOUT_US },
+  { banner: R.images.mota, url: ADMIN_ROUTER_PATH.DESCRIPTION_MEMBER },
+  { banner: R.images.taichinh, url: ADMIN_ROUTER_PATH.FINANCIAL_PRINCIPLES },
+  {
+    banner: R.images.vanhoadoanhnghiep,
+    url: ADMIN_ROUTER_PATH.COMPANY_CULTURE,
+  },
+  { banner: R.images.dieukien, url: ADMIN_ROUTER_PATH.TERM },
+  { banner: R.images.mauthuthap, url: ADMIN_ROUTER_PATH.BUSINESS_SIMULATION },
+  { banner: R.images.phanchianhom, url: ADMIN_ROUTER_PATH.TEAM_DISTRIBUTION },
+  { banner: R.images.chinhsachcanhan, url: ADMIN_ROUTER_PATH.PRIVACY_POLICY },
 ]
 
 const CatalogAboutUs: React.FC = () => {
@@ -25,12 +28,12 @@ const CatalogAboutUs: React.FC = () => {
           md={8}
           xl={6}
           onClick={() => {
-            history.push(ADMIN_ROUTER_PATH.SUPPORT)
+            history.push(item.url)
           }}
           key={item}
         >
           <div className="catalog-block">
-            <img src={item} alt="" />
+            <img src={item.banner} alt="" />
           </div>
         </Styled.ItemCatalog>
       ))}

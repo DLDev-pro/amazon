@@ -16,4 +16,13 @@ export const ADMIN_ROUTER_PATH = {
   PAYMENT: '/payment',
   DEPOSIT_PASS: '/deposit-pass',
   CHANGE_PASS: '/change-pass',
+  ABOUT_US: '/about-us',
+  DESCRIPTION_MEMBER: '/description-member',
+  FINANCIAL_PRINCIPLES: '/financial-principles',
+  COMPANY_CULTURE: '/company-culture',
+  TERM: '/terms',
+  BUSINESS_SIMULATION: '/business-simulation',
+  TEAM_DISTRIBUTION: '/team-distribution',
+  PRIVACY_POLICY: '/privacy-policy',
+  WHEEL: '/wheel',
 }
