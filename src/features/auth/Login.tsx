@@ -115,7 +115,7 @@ function Login(props: any) {
                   />
                 }
                 type={showPassword ? 'text' : 'password'}
-                placeholder={R.strings().placeholder_password}
+                placeholder={t('login_page.password')}
                 iconRender={visible =>
                   visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                 }

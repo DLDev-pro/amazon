@@ -8,9 +8,10 @@ import history from 'utils/history'
 import './style.css'
 import * as Styled from './styled'
 import { CHAT_LINK } from 'utils/constants'
-import { t } from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 const FooterContainer: React.FC = () => {
+  const { t, i18n } = useTranslation()
   const MenuFooter = [
     {
       pathname: ADMIN_ROUTER_PATH.HOME,

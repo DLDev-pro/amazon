@@ -2,13 +2,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button, Col, Divider, Image, Layout, message, Row } from 'antd'
 import R from 'assets'
-import i18n from 'assets/i18n/translation'
 import { ADMIN_ROUTER_PATH, SESSION_KEY } from 'common/config'
 import { getUserInfoAction } from 'features/auth/AuthSlice'
-import { t } from 'i18next'
-import Cookie from 'js-cookie'
 import React, { useEffect, useRef, useState } from 'react'
-import { AiFillBank } from 'react-icons/ai'
+import { useTranslation } from 'react-i18next'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -119,7 +116,8 @@ const ProfilePage: React.FC = () => {
   const dispatch = useDispatch()
   const [listRank, setListRank] = useState<Array<any>>([])
   const [currentLevelIdx, setCurrentLevelIdx] = useState<number>(0)
-
+  const { t, i18n } = useTranslation()
+  const [, setCurrentLanguage] = useState<string>('vi')
   const getData = async () => {
     try {
       const resData = (await getListLevel()).data
@@ -287,7 +285,7 @@ const ProfilePage: React.FC = () => {
               }}
               onChange={handleFileChange}
             >
-              <AiFillBank
+              {/* <AiFillBank
                 style={{
                   fontSize: 20,
                 }}
@@ -304,7 +302,7 @@ const ProfilePage: React.FC = () => {
               />
               <small>
                 <b>Cập nhật NH</b>
-              </small>
+              </small> */}
             </Col>
           </Row>
         </Col>
@@ -584,9 +582,9 @@ const ProfilePage: React.FC = () => {
           >
             <select
               name="countries"
-              // id=""
               onChange={e => {
                 console.log(e.target.value)
+                setCurrentLanguage(e.target.value)
                 i18n.changeLanguage(e.target.value)
               }}
             >

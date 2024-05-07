@@ -70,7 +70,7 @@ const ProfilePage: React.FC = () => {
     })()
   }, [])
 
-  console.log(analyticDetail)
+  // console.log(analyticDetail)
   const getLevelList = async () => {
     try {
       const res = await requestLevelList()
@@ -138,6 +138,14 @@ const ProfilePage: React.FC = () => {
     } catch (error) {
       console.error('Exception ' + error)
     }
+  }
+
+  const num_completed_orders = (data: any) => {
+    // console.log('hahahihihoho', data)
+    if (data.price === 5000000) return 60
+    if (data.price === 25000000) return 80
+    if (data.price === 75000000) return 100
+    else return 120
   }
 
   // const buyProduct = async (key: any, productId: any) => {
@@ -349,7 +357,9 @@ const ProfilePage: React.FC = () => {
           </Styled.InfoBlock>
           <Styled.InfoBlock xs={12} md={12}>
             <p>{t('order_page.num_completed_orders')}</p>
-            <span>{analyticDetail?.count_order_today}/80</span>
+            <span>
+              {analyticDetail?.count_order_today}/{num_completed_orders(data)}
+            </span>
           </Styled.InfoBlock>
           <Styled.InfoBlock xs={12} md={12}>
             <p>{t('order_page.reward_today')}</p>
@@ -357,7 +367,9 @@ const ProfilePage: React.FC = () => {
           </Styled.InfoBlock>
           <Styled.InfoBlock xs={12} md={12}>
             <p>{t('order_page.frozen_balance')} </p>
-            <span>${formatPrice(userInfo?.frozen_balance)}</span>
+            <span>
+              {num_completed_orders(data) - analyticDetail?.count_order_today}{' '}
+            </span>
           </Styled.InfoBlock>
         </Row>
       </Styled.WhiteBox>

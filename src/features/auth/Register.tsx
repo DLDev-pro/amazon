@@ -145,10 +145,7 @@ function Register(props: any) {
                 textAlign: 'center',
               }}
               type="password"
-              placeholder={`Vui lòng nhập ${R.strings().placeholder_password.replace(
-                'Mật khẩu',
-                'mật khẩu'
-              )}`}
+              placeholder={`Vui lòng nhập mật khẩu`}
             />
           </Form.Item>
           <Form.Item
@@ -167,7 +164,7 @@ function Register(props: any) {
                 textAlign: 'center',
               }}
               type="password"
-              placeholder={'Vui lòng nhập mật khẩu vốn'}
+              placeholder={'Vui lòng nhập lại mật khẩu '}
             />
           </Form.Item>
           <Form.Item
