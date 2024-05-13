@@ -21,7 +21,7 @@ const QuickAction: React.FC = () => {
     >
       <Styled.ActionBlock
         onClick={() => {
-          alert('Vòng quay may mắn')
+          history.push(ADMIN_ROUTER_PATH.WHEEL)
         }}
         xs={6}
         md={4}

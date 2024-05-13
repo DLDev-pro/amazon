@@ -12,6 +12,7 @@ import SlickBanner from './components/SlickBanner'
 import * as Styled from './styled'
 import { t } from 'i18next'
 import AboutPage from './About'
+import Game from './Wheel'
 
 const { Title, Paragraph, Text } = Typography
 const HomePage: React.FC = () => {
@@ -203,7 +204,7 @@ const HomePage: React.FC = () => {
 
                   padding: '1rem',
                   position: 'relative',
-                  width: '100%',
+                  width: '93%',
                 }}
               >
                 <h1
