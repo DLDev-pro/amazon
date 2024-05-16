@@ -148,11 +148,11 @@ const AboutPage = () => {
             gap: '10px',
           }}
         >
-          <Col lg={6} md={24} order={1}>
+          {/* <Col lg={6} md={24} order={1}>
             <div className="map">
               <Map />
             </div>
-          </Col>
+          </Col> */}
           <Col lg={8} md={24} order={2}>
             <div className="footer__logo mb-10">
               <img src={R.images.logo_web} alt="" width={200} />
@@ -200,7 +200,7 @@ const AboutPage = () => {
                       </span>
                       Hotline:{' '}
                       <a rel="nofollow" href="tel:028.628874234 - ext: 324">
-                        028.628874234 - ext: 324
+                        028.623374532 - ext: 324
                       </a>
                     </div>
                   </div>
