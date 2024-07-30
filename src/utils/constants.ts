@@ -144,5 +144,4 @@ export enum IsBlockCreateOrder {
 }
 
 // export const CHAT_LINK = 'https://direct.lc.chat/14744685/'
-export const CHAT_LINK =
-  'https://core.vchat.vn/service/chat?code=20695&jwt=d50c1f826b746695f1cc7037e15233c2'
+export const CHAT_LINK = 'https://jivo.chat/Wbtgk18ToA'

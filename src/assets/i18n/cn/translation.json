@@ -85,7 +85,7 @@
     "order_history": "订单历史",
     "order_begin": "开始接单",
     "my_group": "我的团队",
-    "balance": "账户余额: : $",
+    "balance": "账户余额: : ",
     "withdraw_history": "提款历史",
     "deposit_history": "存款历史",
     "pay_detail": "支付详情",
@@ -104,5 +104,5 @@
     "visa_detail": "Visa 信用卡"
   },
   "wait_for_upgrade": "等待升级",
-  "profit_reward": "获得佣金 $"
+  "profit_reward": "获得佣金 "
 }

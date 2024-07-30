@@ -78,19 +78,19 @@ const BillOrder: React.FC = () => {
         </S.ImageBlock>
         <div className="info">
           {t('bill.total_order_price')}:
-          <span className="content">$ {formatPrice(data?.meta?.value)}</span>
+          <span className="content"> {formatPrice(data?.meta?.value)}</span>
         </div>
         <div className="info">
           {t('bill.commission')}:
           <span className="content">
-            $ {formatPrice(data?.meta?.commission)}
+            {formatPrice(data?.meta?.commission)}
           </span>
         </div>
         <div className="info">
           {t('bill.return_blance')}:
           <span className="content">
             {' '}
-            $ {formatPrice(data?.meta?.value + data?.meta?.commission)}
+            {formatPrice(data?.meta?.value + data?.meta?.commission)}
           </span>
         </div>
         <div

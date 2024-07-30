@@ -1,8 +1,9 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { Carousel } from 'antd'
 import R from 'assets'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import * as Styled from '../styled'
+import { StyledMarquee } from '../styled'
 
 const contentStyle: React.CSSProperties = {
   display: 'flex',
@@ -12,8 +13,27 @@ const contentStyle: React.CSSProperties = {
 }
 type Props = { data: any }
 
+
 const SlickBanner: React.FC = () => {
   const carouselRef = useRef<any>(null)
+  const [saleNotification, setSaleNotification] = React.useState<any>([])
+  useEffect( () => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://image.aeonmallstore.com/api/v1/sale-notification'
+        )
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        const jsonData = await response.json()
+        console.log(jsonData)
+        setSaleNotification(jsonData.description)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }}
+      fetchData()
+  },[])
   return (
     <Styled.WrapSlickBanner>
       <div style={{ margin: 'auto' }}>
@@ -37,6 +57,9 @@ const SlickBanner: React.FC = () => {
             }}
           />
         </Styled.ArrowBlock>
+        <StyledMarquee>
+            <p>{saleNotification}</p>
+        </StyledMarquee>
         <Carousel autoplay ref={carouselRef}>
           <div>
             <img alt="banner" src={R.images.banner1} style={contentStyle} />

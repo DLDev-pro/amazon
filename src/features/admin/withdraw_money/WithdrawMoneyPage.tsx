@@ -23,7 +23,7 @@ const WithdrawMoneyPage: React.FC = () => {
       message.success('Yêu cầu rút tiền thành công')
       history.push(ADMIN_ROUTER_PATH.HISTORY_TRANSACTION)
     } else {
-      message.error(resData.message[0])
+      message.error(resData.message[0] + 'Vui lòng liên hệ CSKH để được giải quyết')
     }
   }
 
@@ -48,7 +48,7 @@ const WithdrawMoneyPage: React.FC = () => {
             >
               <Input
                 placeholder="Nhập số tiền"
-                prefix={'$'}
+                prefix={''}
                 // className="ant-input__money-custom"
               />
             </Form.Item>
@@ -64,11 +64,11 @@ const WithdrawMoneyPage: React.FC = () => {
               }}
             >
               <div style={{ marginRight: 15 }}>
-                Tổng tiền: ${formatPrice(userInfo?.balance)}
+                Tổng tiền: {formatPrice(userInfo?.balance + userInfo?.frozen_balance)}
               </div>
               <div
                 onClick={() => {
-                  form.setFieldsValue({ amount: userInfo?.balance })
+                  form.setFieldsValue({ amount: formatPrice(userInfo?.balance + userInfo?.frozen_balance).replaceAll(',', '').replace('VND', '') })
                 }}
                 style={{
                   cursor: 'pointer',

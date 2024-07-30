@@ -61,7 +61,7 @@
     "analytic_detail": "Thành quả hôm nay",
     "balance": "Số dư tài khoản",
     "num_completed_orders": "Số đơn đã hoàn thành",
-    "frozen_balance": "Số đơn để nâng cấp",
+    "frozen_balance": "Số đơn còn lại hôm nay",
     "reward_today": "Hoa hồng hôm nay",
     "explain": "Giải mã",
     "explain_desc": "Lưu ý: Nâng cấp gian hàng để nhận được nhiều đơn và có tỷ lệ hoa hồng cao hơn !",
@@ -85,7 +85,7 @@
     "order_history": "Lịch sử đơn hàng",
     "order_begin": "Bắt đầu săn đơn",
     "my_group": "Nhóm của tôi",
-    "balance": "Số dư tài khoản: $",
+    "balance": "Số dư tài khoản: ",
     "withdraw_history": "Lịch sử rút tiền",
     "deposit_history": "Lịch sử nạp tiền",
     "pay_detail": "Chi tiết thu chi",
@@ -104,5 +104,5 @@
     "visa_detail": "Thông tin Visa"
   },
   "wait_for_upgrade": "Chờ nâng cấp",
-  "profit_reward": "Hoa hồng nhận được $"
+  "profit_reward": "Hoa hồng nhận được "
 }

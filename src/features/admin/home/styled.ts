@@ -1,5 +1,5 @@
 import { Button, Col } from 'antd'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
 export const WrapUserIncomeList = styled.div`
   margin-top: 1rem;
@@ -145,3 +145,41 @@ export const ButtonStyled = styled(Button)`
     padding: 12px !important;
   }
 `
+
+// export const WrapSlickBanner = styled.div`
+//   position: relative;
+//   width: 100%;
+// `;
+
+// export const ArrowBlock = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   position: absolute;
+//   width: 100%;
+//   top: 50%;
+//   transform: translateY(-50%);
+// `;
+
+const marquee = keyframes`
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+`;
+
+export const StyledMarquee = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #f0f0f0; /* Background color for better visibility */
+  padding: 10px 0; /* Padding for better visibility */
+  position: absolute; /* Position it absolutely within the parent */
+  top: 0; /* Align to the top of the parent */
+  z-index: 1; /* Ensure it is above other content */
+
+  p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ${marquee} 30s linear infinite;
+    font-size: 16px; /* Font size for better visibility */
+  }
+`;

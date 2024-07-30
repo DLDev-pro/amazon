@@ -4,6 +4,7 @@ import { Button, Col, Divider, Image, Layout, message, Row } from 'antd'
 import R from 'assets'
 import { ADMIN_ROUTER_PATH, SESSION_KEY } from 'common/config'
 import { getUserInfoAction } from 'features/auth/AuthSlice'
+import Cookies from 'js-cookie'
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -14,7 +15,7 @@ import { getListLevel } from 'services/api/CommonApi'
 import Swal from 'sweetalert2'
 import { CHAT_LINK } from 'utils/constants'
 import history from 'utils/history'
-
+import { formatPrice } from 'utils/ruleForm'
 const { Content } = Layout
 
 const HeadTitle = ({ title }: { title: string }) => {
@@ -350,7 +351,7 @@ const ProfilePage: React.FC = () => {
       </div>
 
       <div style={{ backgroundColor: 'white' }}>
-        <HeadTitle title={t('profile_page.balance') + userInfo?.balance} />
+        <HeadTitle title={t('profile_page.balance') + formatPrice(userInfo?.balance + userInfo?.frozen_balance)} />
         <hr />
 
         <Row
@@ -551,12 +552,12 @@ const ProfilePage: React.FC = () => {
           </Link>
           <p
             onClick={() => {
-              alert('Đăng xuất')
-              // const refWindow: any = window
-              // if (refWindow.$chatwoot) refWindow.$chatwoot.reset()
-              // Cookie.remove(SESSION_KEY.SESSION)
-              // message.success('Đăng xuất')
-              // history.replace('/')
+              // alert('Đăng xuất')
+              const refWindow: any = window
+              if (refWindow.$chatwoot) refWindow.$chatwoot.reset()
+              Cookies.remove(SESSION_KEY.SESSION)
+              message.success('Đăng xuất')
+              history.replace('/')
             }}
             style={{
               display: 'flex',

@@ -26,6 +26,8 @@ const BankCardPage: React.FC = () => {
     }
   }
 
+  console.log(userInfo)
+
   const replaceAt = (replacement: any) => {
     let str = replacement.split('')
     str = str.map((element: any, index: any) => {
@@ -110,13 +112,13 @@ const BankCardPage: React.FC = () => {
           Aeon Group VietNam cũng sẽ không yêu cầu bạn cung cấp trong suốt quá
           trình sử dụng dịch vụ!
         </span>
-        {/* {!userInfo?.bank ? (
+        {!userInfo?.bank ? (
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
               CÀI ĐẶT THÔNG TIN
             </Button>
           </Form.Item>
-        ) : null} */}
+        ) : null} 
       </Form>
     </Styled.Container>
   )

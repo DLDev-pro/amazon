@@ -4,20 +4,37 @@ export const isStrongPassword = (pass: string) => {
     pass
   )
 }
+// export function formatPrice(num: any) {
+//   if (
+//     num === null ||
+//     num === undefined ||
+//     num == 0 ||
+//     Number.isNaN(parseFloat(num))
+//   )
+//     return 0
+
+//   var result = (Math.round((num + Number.EPSILON) * 100) / 100)
+//     .toString()
+//     .replace(/,/g, '')
+//   return result.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+// }
+
 export function formatPrice(num: any) {
   if (
     num === null ||
     num === undefined ||
     num == 0 ||
     Number.isNaN(parseFloat(num))
-  )
-    return 0
+  ) {
+    return '0 VND';
+  }
 
-  var result = (Math.round((num + Number.EPSILON) * 100) / 100)
-    .toString()
-    .replace(/,/g, '')
-  return result.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  var result = parseInt(num).toString().replace(/,/g, '');
+  result = result.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  return result + ' VND';
 }
+
 export function enterNumbersOnly(value: any) {
   if (value === null || value === undefined || value == 0) return ''
   var result = value?.replace(/[^\w\s]/gi, '')
@@ -55,7 +72,7 @@ export const isEmail = (value: string | undefined | null) => {
 
 export const strongPassword = (value: string | undefined | null) =>
   value &&
-  !/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\W])(?!.*['"]).{8,}$/.test(value)
+    !/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\W])(?!.*['"]).{8,}$/.test(value)
     ? 'Must like Abc@1234'
     : undefined
 

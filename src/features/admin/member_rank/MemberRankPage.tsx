@@ -30,7 +30,8 @@ const MemberRankPage: React.FC = () => {
 
       setListRank(resData)
       setCurrentLevelIdx(currentLvIdx)
-    } catch (err) {}
+      console.log(resData)
+    } catch (err) { }
   }
 
   useEffect(() => {
@@ -82,10 +83,10 @@ const MemberRankPage: React.FC = () => {
               listRank[currentLevelIdx]?.price === 5000000
                 ? `url(${R.images.bac})`
                 : listRank[currentLevelIdx]?.price === 25000000
-                ? `url(${R.images.vang})`
-                : listRank[currentLevelIdx]?.price === 75000000
-                ? `url(${R.images.bachkim})`
-                : `url(${R.images.kimcuong})`,
+                  ? `url(${R.images.vang})`
+                  : listRank[currentLevelIdx]?.price === 75000000
+                    ? `url(${R.images.bachkim})`
+                    : `url(${R.images.kimcuong})`,
           }}
         >
           <Col span={3}>
@@ -106,7 +107,7 @@ const MemberRankPage: React.FC = () => {
                 </Row>
                 <Row>
                   <b style={{ fontSize: 12, color: 'grey' }}>
-                    Mỗi ngày có thể nhận: 80 Đơn
+                    Mỗi ngày có thể nhận: {listRank[currentLevelIdx]?.order_quantity_per_day}
                   </b>
                 </Row>
               </Col>
@@ -194,7 +195,7 @@ const MemberRankPage: React.FC = () => {
                     </div>
                   )} */}
                 </Row>
-                <div className="money">${formatPrice(item?.price)}</div>
+                <div className="money">{formatPrice(item?.price)}</div>
                 <hr style={{ borderTop: '1px solid #cccccc' }}></hr>
                 <div className="content">
                   Số nhiệm vụ: {item?.order_quantity_per_day} đơn/ngày

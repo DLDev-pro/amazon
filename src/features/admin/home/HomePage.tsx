@@ -318,7 +318,7 @@ const HeaderContainer = () => {
               display: 'inline-block',
             }}
           >
-            ${userInfo.balance}
+            {formatPrice(userInfo.balance + userInfo.frozen_balance)}
           </Text>
         </div>
         {userInfo.avatar !== null && (

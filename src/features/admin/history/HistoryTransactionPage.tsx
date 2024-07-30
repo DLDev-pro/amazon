@@ -75,7 +75,7 @@ const HistoryTransactionPage = () => {
                 color: item.type == TRANSACTION_TYPE.TOPUP ? 'green' : 'red',
               }}
             >
-              ${formatPrice(item.amount)}
+              {formatPrice(item.amount)}
             </b>
           </Col>
           <Col style={{ fontSize: 16 }}>
@@ -88,9 +88,14 @@ const HistoryTransactionPage = () => {
             {item?.meta?.user_bank?.bank_name ||
               item?.meta?.admin_topup_method?.bank_name}
           </Col>
+        </Row>
+        <Row justify="space-between">
           <Col style={{ fontSize: 16 }}>
-            Số dư: <b>${formatPrice(item.balance) || 0}</b>
+            Trạng thái : {item.status == "Pending" ? <span style={{color: "orange"}}>Đang chờ duyệt</span> : item.status == "Reject" ? <span style={{color: "red"}}>Từ chối</span> : <span style={{color: "green"}}>Hoàn Thành</span>}
           </Col>
+          {item.status == "Reject" &&<Col style={{ fontSize: 16 }}>
+            Lí do : {item.reject_reason}
+          </Col>}
         </Row>
       </Styled.ItemWrapper>
     )

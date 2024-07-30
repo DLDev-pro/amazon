@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Button, Col, Divider, Image, Layout, message, Row } from 'antd'
@@ -16,7 +14,11 @@ import Swal from 'sweetalert2'
 import { CHAT_LINK } from 'utils/constants'
 import history from 'utils/history'
 import './wheel.css'
-// import "react-wheel-of-prizes/dist/index.css";
+import {
+  requestLevelCategory,
+  requestLevelDetail,
+  requestLevelList,
+} from '../home/Api/LevelApi';
 import { Wheel } from 'react-custom-roulette'
 import { getUserAnalytic } from 'services/api/CommonApi'
 const buttonMotion = {
@@ -142,7 +144,7 @@ export default function Game() {
   const [audio, setAudio] = useState()
   const [showPrize, setShowPrize] = useState('')
   const [modalPrize, setModalPrize] = useState(false)
-
+  const [dataLevel, setDataLevel] = useState({});
   const [percentages, setPercentages] = useState([
     1,
     5,
@@ -174,17 +176,64 @@ export default function Game() {
     }
   }
 
+  const getLevelList = async () => {
+    try {
+      const res = await requestLevelList();
+      const ownLevel = userInfo?.level;
+      let currentLevelData = res.data.find((item) => item.key === ownLevel) || res.data[0];
+      console.log('Current Level', currentLevelData);
+      setDataLevel(currentLevelData);
+    } catch (error) {
+      console.error('Exception', error);
+    }
+  };
+  
+  const getLevelDetail = async (myParam) => {
+    try {
+      const res = await requestLevelDetail(myParam);
+      setDataLevel(res.data);
+    } catch (error) {
+      console.error('Exception', error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get('key');
+      try {
+        if (myParam) {
+          await getLevelDetail(myParam);
+          // await getLevelCategory(myParam);
+        } else {
+          await getLevelList();
+        }
+        await dispatch(getUserInfoAction());
+        const analyticData = await getUserAnalytic();
+        setAnalyticDetail(analyticData.data);
+      } catch (error) {
+        console.error('Error fetching data', error);
+      } finally {
+        // setIsLoading(false);
+        // setShowProduct(true);
+      }
+    };
+    fetchData();
+    // getRandomIncome();
+    // const intervalId = setInterval(getRandomIncome, 5000);
+    // return () => clearInterval(intervalId);
+  }, []);
+
   const handleSpinClick = () => {
     // kiểm tra người đó có được quay không
     console.log(
-      'Check' + analyticDetail?.count_order_today,
-      num_completed_orders()
-    )
-    if (analyticDetail?.count_order_today !== num_completed_orders()) {
+      'Check' + analyticDetail?.count_order_today !== dataLevel.order_quantity_per_day)
+
+    if (analyticDetail?.count_order_today !== dataLevel.order_quantity_per_day) {
       Swal.fire({
         title: 'Thất bại',
         text: `Bạn chưa hoàn thành tổng số đơn hôm nay! Hãy hoàn thành ${
-          num_completed_orders() - analyticDetail?.count_order_today
+          dataLevel.order_quantity_per_day - analyticDetail?.count_order_today
         } nữa và quay lại nhé`,
         icon: 'error',
         confirmButtonText: 'OK',

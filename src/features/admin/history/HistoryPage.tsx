@@ -94,9 +94,8 @@ const HistoryPage: React.FC = () => {
           </Col>
           <Col
             span={6}
-            className={`title-tabs ${
-              params.status === 'Processing' ? 'active' : ''
-            }`}
+            className={`title-tabs ${params.status === 'Processing' ? 'active' : ''
+              }`}
             onClick={() => {
               history.push({
                 pathname: ADMIN_ROUTER_PATH.HISTORY,
@@ -109,9 +108,8 @@ const HistoryPage: React.FC = () => {
 
           <Col
             span={6}
-            className={`title-tabs ${
-              params.status === 'Success' ? 'active' : ''
-            }`}
+            className={`title-tabs ${params.status === 'Success' ? 'active' : ''
+              }`}
             onClick={() => {
               history.push({
                 pathname: ADMIN_ROUTER_PATH.HISTORY,
@@ -123,9 +121,8 @@ const HistoryPage: React.FC = () => {
           </Col>
           <Col
             span={6}
-            className={`title-tabs ${
-              params.status === 'Frozen' ? 'active' : ''
-            }`}
+            className={`title-tabs ${params.status === 'Frozen' ? 'active' : ''
+              }`}
             onClick={() => {
               history.push({
                 pathname: ADMIN_ROUTER_PATH.HISTORY,
@@ -152,7 +149,7 @@ const HistoryPage: React.FC = () => {
       <Styled.ContentTab>
         {listOrder?.map((item: any) => {
           console.log('item', item)
-          let nameProduct = ''
+          let nameProduct = item.name_product
           if (item.name_product.length > 50) {
             nameProduct = item.name_product.slice(0, 45) + '...'
           }
@@ -213,7 +210,7 @@ const HistoryPage: React.FC = () => {
                       Giá trị đơn hàng
                     </div>
                     <div style={{ color: 'var(--green-1)', fontSize: 18 }}>
-                      ${formatPrice(item.price_product)}
+                      {formatPrice(item.price_product)}
                     </div>
                   </div>
                   <div className="price-block">
@@ -225,7 +222,7 @@ const HistoryPage: React.FC = () => {
                       Lợi nhuận
                     </div>
                     <div style={{ color: 'var(--orange-1)', fontSize: 18 }}>
-                      ${formatPrice(item.commission)}
+                      {formatPrice(item.commission)}
                     </div>
                   </div>
                 </div>

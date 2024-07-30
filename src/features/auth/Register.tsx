@@ -33,8 +33,8 @@ function Register(props: any) {
     try {
       setLoading(true)
       const resRegister = await requestSignin({
-        identifier: values.identifier,
-        name: 'user',
+        identifier: values.name,
+        name: values.name,
         phone: values.phone,
         password: values.password,
         tfa_password: values.tfa_pass,
